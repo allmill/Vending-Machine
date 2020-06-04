@@ -7,6 +7,8 @@ namespace Capstone.Classes
 {
     public class FileReader
     {
+        public static string[] inventoryWords;
+
         /* Importing initial csv
          * Assign values to inventory
          * Update # inventory
@@ -35,7 +37,7 @@ namespace Capstone.Classes
                     while(!sr.EndOfStream)
                     {
                         selectionLine = sr.ReadLine();
-                        string[] inventoryWords = selectionLine.Split("|");
+                        inventoryWords = selectionLine.Split("|");
                         allWords.AddRange(inventoryWords);
 
                     }
