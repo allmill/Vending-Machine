@@ -4,11 +4,15 @@ using System.Text;
 
 namespace Capstone.Classes
 {
-    public class Chips : Inventory, ISounds
+    public class Chips : InventoryItem, ISounds
     {
         /* Sound
   Item name
   Price 
   Quantity */
+        public override string MakeSound()
+        {
+            return null;
+        }
     }
 }
