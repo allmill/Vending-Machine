@@ -10,6 +10,12 @@ namespace Capstone.Classes
         private string itemSlot;
         private decimal itemCost;
         
+        public InventoryItem (string itemName, string itemSlot, decimal itemCost)
+        {
+            this.itemName = itemName;
+            this.itemSlot = itemSlot;
+            this.itemCost = itemCost;
+        }
         
         public string ItemName
         {
@@ -32,7 +38,9 @@ namespace Capstone.Classes
                 return itemCost;
             }
         }
+        public string ItemSound;
 
         public abstract string MakeSound();
+
     }
 }
