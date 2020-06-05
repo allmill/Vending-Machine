@@ -24,7 +24,7 @@ namespace Capstone.Classes
 
             //ReaderVariables
             string selectionLine;
-            List<string> allWords = new List<string>();
+            //List<string> allWords = new List<string>();
             //Dictionary<string,string> directCodeandName = new Dictionary
             //Inventory Menu variables
 
@@ -44,13 +44,40 @@ namespace Capstone.Classes
                         string slotID = inventoryWords[0];
                         string productName = inventoryWords[1];
                         decimal itemPrice = decimal.Parse(inventoryWords[2]);
+                        List<InventoryItem> chips = new List<InventoryItem>();
+                        List<InventoryItem> candy = new List<InventoryItem>();
+                        List<InventoryItem> drinks = new List<InventoryItem>();
 
                         if (slotID.StartsWith("A"))
                         {
-                            List<InventoryItem> chips = new List<InventoryItem>();
+                            
                             for (int i=0; i < 5; i++)
                             {
                                 chips.Add(new Chips(productName, slotID, itemPrice));
+                            }
+                        }
+                        else if (slotID.StartsWith("B"))
+                        {
+                            
+                            for (int i = 0; i < 5; i++)
+                            {
+                                candy.Add(new Candy(productName, slotID, itemPrice));
+                            }
+                        }
+                        else if (slotID.StartsWith("C"))
+                        {
+                            
+                            for (int i = 0; i < 5; i++)
+                            {
+                                drinks.Add(new Drinks(productName, slotID, itemPrice));
+                            }
+                        }
+                        else
+                        {
+                            List<InventoryItem> gum = new List<InventoryItem>();
+                            for (int i = 0; i < 5; i++)
+                            {
+                                gum.Add(new Gum(productName, slotID, itemPrice));
                             }
                         }
 
