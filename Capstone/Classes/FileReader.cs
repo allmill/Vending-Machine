@@ -7,6 +7,8 @@ namespace Capstone.Classes
 {
     public class FileReader
     {
+        public static string[] inventoryWords;
+
         /* Importing initial csv
          * Assign values to inventory
          * Update # inventory
@@ -23,8 +25,8 @@ namespace Capstone.Classes
             //ReaderVariables
             string selectionLine;
             List<string> allWords = new List<string>();
-            //Dictionary<string,string> diectCodeandName = new Dictionary
-            //Invenotry Menu variables
+            //Dictionary<string,string> directCodeandName = new Dictionary
+            //Inventory Menu variables
 
 
             try
