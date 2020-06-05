@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Capstone.Classes;
 
 namespace Capstone.Classes
 {
@@ -22,7 +23,15 @@ namespace Capstone.Classes
                 Console.WriteLine();
                 Console.Write(kvp.Key); Console.Write(" : "); Console.Write(kvp.Value);
             }
+            Console.WriteLine();
+            Console.WriteLine();
             itemSelection = Console.ReadLine().ToUpper();
+
+            CompareInput();
+           
+
+
+
 
             Console.WriteLine($"Is {itemSelection} in an object or dictionary?");
 
@@ -34,6 +43,17 @@ namespace Capstone.Classes
             //return to PurchaseMenu()
 
 
+        }
+
+        public static void CompareInput()
+        {
+            foreach (var itemSlot in gum)
+            {
+                if (itemSelection == Gum.itemSlot)
+                {
+
+                }
+            }
         }
 
         public static void VendingItem()
