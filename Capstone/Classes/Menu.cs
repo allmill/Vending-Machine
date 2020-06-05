@@ -61,6 +61,7 @@ namespace Capstone.Classes
 
             if (purchaseMenuSelect == "1")
             {
+                
                 // unsure if we want to ask amounts here or elsewhere, if so will do another method to encompass that
             }
             else if (purchaseMenuSelect == "2")
