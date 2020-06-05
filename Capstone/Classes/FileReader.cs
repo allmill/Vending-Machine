@@ -7,6 +7,11 @@ namespace Capstone.Classes
 {
     public class FileReader
     {
+        //Dictionaries for ivnentory to use, they are stored entirely as strings,
+        //will have to convert price to decimal
+        public static Dictionary<string, string> CodeAndName;
+        public static Dictionary<string, string> NameAndPrice;
+        public static Dictionary<string, string> NameAndType;
 
         public static string[] inventoryWords;
 
@@ -19,12 +24,18 @@ namespace Capstone.Classes
         {
             //FileAssignment variables
             //Environment.CurrentDirectory = @"C:\Users\Student\workspace\capstone\csharp-capstone-module-1-team-4";
-            string directoryPath = @"C:\Users\Student\workspace\Capstones\csharp - capstone - module - 1 - team - 4";
+            string directoryPath = @"C:\Users\Student\workspace\capstone\csharp-capstone-module-1-team-4";
             string fileName = "vendingmachine.csv";
             string inventoryPath = Path.Combine(directoryPath, fileName);
 
             //ReaderVariables
             string selectionLine;
+            List<string> allWords = new List<string>();
+
+            Dictionary<string,string> dictCodeandName = new Dictionary<string,string>();
+            Dictionary<string,string> dictNameandPrice = new Dictionary<string,string>();
+            Dictionary<string, string> dictNameandType = new Dictionary<string, string>();
+
             //List<string> allWords = new List<string>();
             //Dictionary<string,string> directCodeandName = new Dictionary
             //Inventory Menu variables
@@ -43,6 +54,11 @@ namespace Capstone.Classes
                         
                         selectionLine = sr.ReadLine();
                         string[] inventoryWords = selectionLine.Split("|");
+
+                        allWords.AddRange(inventoryWords);
+                        dictCodeandName.Add(inventoryWords[0], inventoryWords[1]);
+                        dictNameandPrice.Add(inventoryWords[1], inventoryWords[2]);
+                        dictNameandType.Add(inventoryWords[1], inventoryWords[3]);
                         //allwords.AddRange(inventoryWords);
                         //dictCodeandName.Add(inventoryWords[0], inventoryWords[1]);
                         string slotID = inventoryWords[0];
@@ -94,14 +110,20 @@ namespace Capstone.Classes
                             itemSlot = new Slot(slotID, gum);
                         }
 
+
                     }
 
                 }
+                CodeAndName = dictCodeandName;
+                NameAndPrice = dictNameandPrice;
+                NameAndType = dictNameandType;
+
             }
             catch (IOException e)
             {
                 Console.WriteLine("Error reading file or file not found");
             }
+
 
         }
 
