@@ -25,12 +25,22 @@ namespace Capstone.Classes
             Console.WriteLine("(2) Purchase");
             Console.WriteLine("(3) Exit");
             string startingMenuSelect = Console.ReadLine();
-
+            int[] inventoryAmount = new int[5];
 
             if (startingMenuSelect == "1")
             {
                 //display VendingMachine dictionary.ItemName and List.Amount
                 FileReader.InventoryImport();
+                foreach(KeyValuePair<string, string> kvp in FileReader.CodeAndName)
+                {
+                        Console.WriteLine();
+                        Console.Write(kvp.Key); Console.Write(" : "); Console.Write(kvp.Value); Console.Write("\t" + 5); 
+                }
+                Console.WriteLine();
+                Console.WriteLine("Press a key to return to Main Menu");
+                Console.ReadLine();
+                MainMenu();
+
             }
             else if (startingMenuSelect == "2")
             {
