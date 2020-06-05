@@ -84,8 +84,7 @@ namespace Capstone.Classes
                         }
                         //If slotID starts with D, the item name, ID and price are added to a list for the type Gum
                         else
-                        {
-                            
+                        {                            
                             //Looping through all of those that start with D
                             for (int i = 0; i < 5; i++)
                             {
@@ -93,7 +92,7 @@ namespace Capstone.Classes
                             }
                             itemSlot = new Slot(slotID, gum);
                         }
-
+                        slot[slotID] = itemSlot; 
                     }
 
                 }
