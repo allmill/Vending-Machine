@@ -33,7 +33,6 @@ namespace Capstone.Classes
             }
         }
 
-
         public int NumberOfItemsRemaining
         {
             get

@@ -27,7 +27,7 @@ namespace Capstone.Classes
             Console.WriteLine();
             itemSelection = Console.ReadLine().ToUpper();
 
-            CompareInput();
+           // CompareInput();
            
 
 
@@ -45,16 +45,16 @@ namespace Capstone.Classes
 
         }
 
-        public static void CompareInput()
-        {
-            foreach (var itemSlot in gum)
-            {
-                if (itemSelection == Gum.itemSlot)
-                {
+        //public static void CompareInput()
+        //{
+        //    foreach (var itemSlot in gum)
+        //    {
+        //        if (itemSelection == Gum.itemSlot)
+        //        {
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
 
         public static void VendingItem()
         {
