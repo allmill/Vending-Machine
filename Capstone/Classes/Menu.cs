@@ -18,6 +18,7 @@ namespace Capstone.Classes
         public static void MainMenu()
         {
             Console.Clear();
+            FileReader.InventoryImport();
             Console.WriteLine("---- Welcome to the Vendo-Matic 800 ----");
             Console.WriteLine("Please select a number 1 - 3 for the following menu options.");
             Console.WriteLine();
@@ -25,16 +26,17 @@ namespace Capstone.Classes
             Console.WriteLine("(2) Purchase");
             Console.WriteLine("(3) Exit");
             string startingMenuSelect = Console.ReadLine();
-            int[] inventoryAmount = new int[5];
-
+            int[] inventoryAmount = { 5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5};
+            int i = 0;
             if (startingMenuSelect == "1")
             {
                 //display VendingMachine dictionary.ItemName and List.Amount
                 FileReader.InventoryImport();
-                foreach(KeyValuePair<string, string> kvp in FileReader.CodeAndName)
+                foreach (KeyValuePair<string, string> kvp in FileReader.CodeAndName)
                 {
-                        Console.WriteLine();
-                        Console.Write(kvp.Key); Console.Write(" : "); Console.Write(kvp.Value); Console.Write("\t" + 5); 
+                    Console.WriteLine();
+                    Console.Write(kvp.Key); Console.Write(" : "); Console.Write(kvp.Value); Console.Write("\t"); Console.Write("\t"); Console.Write($" Amount: {inventoryAmount[i]}");
+                    inventoryAmount[i] = inventoryAmount[i + 1];
                 }
                 Console.WriteLine();
                 Console.WriteLine("Press a key to return to Main Menu");
