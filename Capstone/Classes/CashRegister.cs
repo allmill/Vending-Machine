@@ -72,9 +72,6 @@ namespace Capstone.Classes
                 change = balance - runningTotal;
             }
                 return change;
-
-            
-
         }
 
 
