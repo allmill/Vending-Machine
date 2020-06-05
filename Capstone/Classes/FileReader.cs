@@ -7,6 +7,7 @@ namespace Capstone.Classes
 {
     public class FileReader
     {
+
         public static string[] inventoryWords;
 
         /* Importing initial csv
@@ -28,6 +29,9 @@ namespace Capstone.Classes
             //Dictionary<string,string> directCodeandName = new Dictionary
             //Inventory Menu variables
 
+            //Object assignment variables
+            Dictionary<string, Slot> slot = new Dictionary<string, Slot>();
+            Slot itemSlot;
 
             try
             {
@@ -47,38 +51,47 @@ namespace Capstone.Classes
                         List<InventoryItem> chips = new List<InventoryItem>();
                         List<InventoryItem> candy = new List<InventoryItem>();
                         List<InventoryItem> drinks = new List<InventoryItem>();
-
+                        List<InventoryItem> gum = new List<InventoryItem>();
+                        //If slotID starts with A, the item name, ID and price are added to a list for the type Chips
                         if (slotID.StartsWith("A"))
                         {
-                            
+                            //Looping through all of those that start with A
                             for (int i=0; i < 5; i++)
                             {
                                 chips.Add(new Chips(productName, slotID, itemPrice));
                             }
+                            itemSlot = new Slot(slotID, chips);
                         }
+                        //If slotID starts with B, the item name, ID and price are added to a list for the type Candy
                         else if (slotID.StartsWith("B"))
                         {
-                            
+                            //Looping through all of those that start with B
                             for (int i = 0; i < 5; i++)
                             {
                                 candy.Add(new Candy(productName, slotID, itemPrice));
                             }
+                            itemSlot = new Slot(slotID, candy);
                         }
+                        //If slotID starts with C, the item name, ID and price are added to a list for the type Drinks
                         else if (slotID.StartsWith("C"))
                         {
-                            
+                            //Looping through all of those that start with C
                             for (int i = 0; i < 5; i++)
                             {
                                 drinks.Add(new Drinks(productName, slotID, itemPrice));
                             }
+                            itemSlot = new Slot(slotID, drinks);
                         }
+                        //If slotID starts with D, the item name, ID and price are added to a list for the type Gum
                         else
                         {
-                            List<InventoryItem> gum = new List<InventoryItem>();
+                            
+                            //Looping through all of those that start with D
                             for (int i = 0; i < 5; i++)
                             {
                                 gum.Add(new Gum(productName, slotID, itemPrice));
                             }
+                            itemSlot = new Slot(slotID, gum);
                         }
 
                     }
