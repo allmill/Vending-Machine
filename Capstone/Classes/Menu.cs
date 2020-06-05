@@ -71,10 +71,11 @@ namespace Capstone.Classes
 
             if (purchaseMenuSelect == "1")
             {
-                // unsure if we want to ask amounts here or elsewhere, if so will do another method to encompass that
+                CashRegister.TakeInMoney();
             }
             else if (purchaseMenuSelect == "2")
             {
+                VendingMachine.VendingSelection();
                 // Show list of products available and Customer Enters a code to select. 
                 //if code doesnt exist return info and back to PurchaseMenu()
                 //if sold out, informed then returned to PurchaseMenu()
