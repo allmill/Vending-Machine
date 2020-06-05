@@ -50,7 +50,7 @@ namespace Capstone.Classes
             if (balance > 0.0M)
             {
                 //subtract the item cost * how many items you bought from the balance
-                change = balance - (Inventory.candy * amountOfItemsBought) - (Inventory.chips * amountOfItemsBought) - (Inventory.drinks * amountOfItemsBought) - (Inventory.gum * amountOfItemsBought);
+      //          change = balance - (InventoryItem.candy * amountOfItemsBought) - (InventoryItem.chips * amountOfItemsBought) - (InventoryItem.Drinks * amountOfItemsBought) - (Inventory.gum * amountOfItemsBought);
             }
                 return change;
         }
