@@ -1,11 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Capstone.Classes;
 
 namespace Capstone.Classes
 {
     public class VendingMachine
     {
+
+        public static List<Chips> chips;
+        public static List<Candy> candy;
+        public static List<Drinks> drinks;
+        public static List<Gum> gum;
+
         /* Check for selection - valid/invalid/sold out
          * Menu is outward facing part of Vending Machine
          * Vending Machine slots
@@ -26,7 +33,15 @@ namespace Capstone.Classes
                 Console.WriteLine();
                 Console.Write(kvp.Key); Console.Write(" : "); Console.Write(kvp.Value);
             }
+            Console.WriteLine();
+            Console.WriteLine();
             itemSelection = Console.ReadLine().ToUpper();
+
+            CompareInput();
+           
+
+
+
 
             Console.WriteLine($"Is {itemSelection} in an object or dictionary?");
 
@@ -38,6 +53,17 @@ namespace Capstone.Classes
             //return to PurchaseMenu()
 
 
+        }
+
+        public static void CompareInput()
+        {
+            foreach (var itemSlot in gum)
+            {
+                if (itemSelection == Gum.itemSlot)
+                {
+
+                }
+            }
         }
 
         public static void VendingItem()
