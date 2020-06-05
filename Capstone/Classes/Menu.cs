@@ -7,7 +7,7 @@ namespace Capstone.Classes
 {
     public class Menu
     {
-
+        private Dictionary<string, Slot> slot = new Dictionary<string, Slot>();
         /*prompt
          * display items
          * purchase items
@@ -32,17 +32,16 @@ namespace Capstone.Classes
             {
                 //display VendingMachine dictionary.ItemName and List.Amount
                 FileReader.InventoryImport();
-                foreach (KeyValuePair<string, string> kvp in FileReader.CodeAndName)
+                foreach(KeyValuePair<string, Slot> kvp in VendingMachine.slot)
                 {
-                    Console.WriteLine();
-                    Console.Write(kvp.Key); Console.Write(" : "); Console.Write(kvp.Value); Console.Write("\t"); Console.Write("\t"); Console.Write($" Amount: {inventoryAmount[i]}");
-                    inventoryAmount[i] = inventoryAmount[i + 1];
+                       Console.WriteLine();
+                       Console.Write($"{kvp.Key} : {kvp.Value.slotItem[0].ItemName} : {kvp.Value.slotItem[0].ItemCost} : {kvp.Value.NumberOfItemsRemaining}"); 
                 }
                 Console.WriteLine();
                 Console.WriteLine("Press a key to return to Main Menu");
                 Console.ReadLine();
                 MainMenu();
-
+                
             }
             else if (startingMenuSelect == "2")
             {
