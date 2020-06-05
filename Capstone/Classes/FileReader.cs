@@ -7,7 +7,7 @@ namespace Capstone.Classes
 {
     public class FileReader
     {
-        public static string[] inventoryWords;
+        public static Dictionary<string, string> CodeAndName;
 
         /* Importing initial csv
          * Assign values to inventory
@@ -25,6 +25,7 @@ namespace Capstone.Classes
             //ReaderVariables
             string selectionLine;
             List<string> allWords = new List<string>();
+            Dictionary<string,string> dictCodeandName = new Dictionary<string,string>();
 
             //Invenotry Menu variables
 
@@ -37,8 +38,9 @@ namespace Capstone.Classes
                     while(!sr.EndOfStream)
                     {
                         selectionLine = sr.ReadLine();
-                        inventoryWords = selectionLine.Split("|");
+                        string[] inventoryWords = selectionLine.Split("|");
                         allWords.AddRange(inventoryWords);
+                        dictCodeandName.Add(inventoryWords[0], inventoryWords[1]);
 
                     }
 
@@ -48,6 +50,7 @@ namespace Capstone.Classes
             {
                 Console.WriteLine("Error reading file or file not found");
             }
+
 
         }
 
