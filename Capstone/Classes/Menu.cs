@@ -18,6 +18,7 @@ namespace Capstone.Classes
         public static void MainMenu()
         {
             Console.Clear();
+            //FileReader.InventoryImport(); is done at startup and prevents from restocking if they go back to MainMenu
             Console.WriteLine("---- Welcome to the Vendo-Matic 800 ----");
             Console.WriteLine("Please select a number 1 - 3 for the following menu options.");
             Console.WriteLine();
@@ -25,8 +26,8 @@ namespace Capstone.Classes
             Console.WriteLine("(2) Purchase");
             Console.WriteLine("(3) Exit");
             string startingMenuSelect = Console.ReadLine();
-            int[] inventoryAmount = new int[5];
-
+            int[] inventoryAmount = { 5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5};
+            int i = 0;
             if (startingMenuSelect == "1")
             {
                 //display VendingMachine dictionary.ItemName and List.Amount

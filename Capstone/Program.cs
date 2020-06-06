@@ -7,6 +7,7 @@ namespace Capstone
     {
         public static void Main(string[] args)
         {
+            FileReader.InventoryImport();
             Menu.MainMenu();
         }
     }
