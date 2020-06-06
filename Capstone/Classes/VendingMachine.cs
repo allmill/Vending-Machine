@@ -10,6 +10,11 @@ namespace Capstone.Classes
         public static Dictionary<string, Slot> slot = new Dictionary<string, Slot>();
         public static string itemSelection;
         public static decimal itemCost;
+        public static string Key {
+            get { return itemSelection; }
+
+        }
+        public static struct kvp {Key,Capstone.Classes.Slot);}
 
         public static void VendingSelection()
         {
@@ -50,17 +55,18 @@ namespace Capstone.Classes
         {
             foreach (KeyValuePair<string, Slot> kvp in VendingMachine.slot)
             {
-                if (itemSelection == kvp.Key && kvp.Value.NumberOfItemsRemaining == 0)
+                //kvp.Key = itemSelection;
+                if (slot.ContainsKey(itemSelection) && kvp.Key == itemSelection)
                 {
                     Console.WriteLine("Item is sold out. Returning to Purchase Menu. Press any key to continue.");
                     Console.ReadLine();
                     Menu.PurchaseMenu();
                 }
-                else if (itemSelection == kvp.Key && CashRegister.balance > kvp.Value.slotItem[].ItemCost)
+                else if (slot.ContainsKey(itemSelection) && CashRegister.balance > kvp.Value.slotItem[0].ItemCost)
                 {
                     VendingItem();
                 }
-                else if (itemSelection == kvp.Key && CashRegister.balance < kvp.Value.slotItem[0].ItemCost)
+                else if (slot.ContainsKey(itemSelection) && CashRegister.balance < kvp.Value.slotItem[0].ItemCost)
                 {
                     Console.WriteLine("Insufficient funds. Please deposit more. Returning to Purchase Menu.");
                     Console.WriteLine("Press any key to continue.");
@@ -78,7 +84,20 @@ namespace Capstone.Classes
 
         public static void VendingItem()
         {
-            Console.WriteLine("Vending item...");
+            foreach (KeyValuePair<string, Slot> kvp in VendingMachine.slot)
+            {
+                if (slot.ContainsKey(itemSelection))
+                {
+                    //kvp.Value.SlotID = itemSelection;
+                    Console.WriteLine("Vending item...");
+                    CashRegister.balance -= kvp.Value.slotItem[0].ItemCost;
+                    Console.WriteLine($"Vended: {kvp.Value.slotItem[0].ItemName} Cost: {kvp.Value.slotItem[0].ItemCost} Balance: {CashRegister.balance}");
+                    Console.WriteLine($"{kvp.Value.slotItem[0].ItemSound}");
+                }
+            }
+
+                
+            
             //Console.Write($"{kvp.Key} : {kvp.Value.slotItem[0].ItemName} : {kvp.Value.slotItem[0].ItemCost}
             //CashRegister.balance -= kvp.Value.slotItem[0].ItemCost;
         }

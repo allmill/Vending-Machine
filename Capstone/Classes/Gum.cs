@@ -6,6 +6,7 @@ namespace Capstone.Classes
 {
     public class Gum : InventoryItem
     {
+
         public Gum(string itemName, string itemSlot, decimal itemCost) : base(itemName, itemSlot, itemCost)
         {
 

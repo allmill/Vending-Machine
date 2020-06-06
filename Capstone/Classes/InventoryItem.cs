@@ -6,9 +6,9 @@ namespace Capstone.Classes
 {
     public abstract class InventoryItem
     {
-        private string itemName;
-        private string itemSlot;
-        private decimal itemCost;
+        public string itemName;
+        public string itemSlot;
+        public decimal itemCost;
         
         public InventoryItem (string itemName, string itemSlot, decimal itemCost)
         {
