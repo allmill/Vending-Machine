@@ -49,7 +49,7 @@ namespace Capstone.Classes
                             {
                                 itemsInSlot.Add(new Chips(slotID, productName, itemPrice));
                             }
-                            itemSlot = new Slot(slotID, itemsInSlot, itemPrice * .2M);
+                            itemSlot = new Slot(slotID, itemsInSlot, itemPrice);
                         }
                         //If slotID starts with B, the item name, ID and price are added to a list for the type Candy
                         else if (slotID.StartsWith("B"))
@@ -59,7 +59,7 @@ namespace Capstone.Classes
                             {
                                 itemsInSlot.Add(new Candy(slotID, productName, itemPrice));
                             }
-                            itemSlot = new Slot(slotID, itemsInSlot, itemPrice * .2M);
+                            itemSlot = new Slot(slotID, itemsInSlot, itemPrice);
                         }
                         //If slotID starts with C, the item name, ID and price are added to a list for the type Drinks
                         else if (slotID.StartsWith("C"))
@@ -69,7 +69,7 @@ namespace Capstone.Classes
                             {
                                 itemsInSlot.Add(new Drinks(slotID, productName, itemPrice));
                             }
-                            itemSlot = new Slot(slotID, itemsInSlot, itemPrice * .2M);
+                            itemSlot = new Slot(slotID, itemsInSlot, itemPrice);
                         }
                         //If slotID starts with D, the item name, ID and price are added to a list for the type Gum
                         else
@@ -79,7 +79,7 @@ namespace Capstone.Classes
                             {
                                 itemsInSlot.Add(new Gum(slotID, productName, itemPrice));
                             }
-                            itemSlot = new Slot(slotID, itemsInSlot, itemPrice * .2M);
+                            itemSlot = new Slot(slotID, itemsInSlot, itemPrice);
                         }
                         VendingMachine.slot[slotID] = itemSlot;
                     }
