@@ -10,7 +10,7 @@ namespace Capstone.Classes
         private string itemSlot;
         private decimal itemCost;
         
-        public InventoryItem (string itemName, string itemSlot, decimal itemCost)
+        public InventoryItem (string itemSlot, string itemName, decimal itemCost)
         {
             this.itemName = itemName;
             this.itemSlot = itemSlot;
