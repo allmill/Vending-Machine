@@ -8,17 +8,15 @@ namespace Capstone.Classes
     {
         private string slotID;
         private InventoryItem slotType;
-        private List<InventoryItem> slotItems = new List<InventoryItem>();
+        public List<InventoryItem> slotItem { get; }
 
         //Creating Constructor for Slot
-        public Slot (string slotID, List<InventoryItem> slotItems)
+        public Slot (string slotID, List<InventoryItem> slotItemNumber)
         {
-            
-
+            this.slotID = slotID;
+            slotItem = slotItemNumber;
         }
-
-
-
+        
         public string SlotID
         {
             get
@@ -35,11 +33,19 @@ namespace Capstone.Classes
             }
         }
 
-        public List<InventoryItem> SlotItems
+        public int NumberOfItemsRemaining
         {
             get
             {
-                return slotItems;
+                return slotItem.Count;
+            }
+        }
+
+        public bool isEmpty
+        {
+            get 
+            {
+                return NumberOfItemsRemaining == 0;
             }
         }
 
