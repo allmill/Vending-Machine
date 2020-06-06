@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace Capstone.Classes
@@ -10,5 +11,6 @@ namespace Capstone.Classes
          * Start/Ending money
          * Date/Time
          * File name assignment*/
+        
     }
 }

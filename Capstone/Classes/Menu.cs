@@ -71,6 +71,7 @@ namespace Capstone.Classes
 
             if (purchaseMenuSelect == "1")
             {
+                CashRegister.TakeInMoney();
                 // unsure if we want to ask amounts here or elsewhere, if so will do another method to encompass that
             }
             else if (purchaseMenuSelect == "2")
@@ -86,6 +87,7 @@ namespace Capstone.Classes
             }
             else if (purchaseMenuSelect == "3")
             {
+                CashRegister.ChangeWithLeastAmountOfCoins();
                 //Customer finalizes all transactions and is returned to the MainMenu()
                 //return change - using fewest coins using division and modulus probably
                 //Machine current balance should be udpated to 0$ remaining
