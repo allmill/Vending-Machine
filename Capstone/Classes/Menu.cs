@@ -34,7 +34,7 @@ namespace Capstone.Classes
                 foreach(KeyValuePair<string, Slot> kvp in VendingMachine.slot)
                 {
                        Console.WriteLine();
-                       Console.Write($"{kvp.Key} : {kvp.Value.slotItem[0].ItemName} : {kvp.Value.slotItem[0].ItemCost} : {kvp.Value.NumberOfItemsRemaining}"); 
+                       Console.Write($"{kvp.Key} : {kvp.Value.slotItem[0].ItemName} : {kvp.Value.slotItem[0].ItemCost:C2} : {kvp.Value.NumberOfItemsRemaining}"); 
                 }
                 Console.WriteLine();
                 Console.WriteLine("Press a key to return to Main Menu");

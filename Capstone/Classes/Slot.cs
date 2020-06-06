@@ -41,7 +41,7 @@ namespace Capstone.Classes
             }
         }
 
-        public bool isEmpty
+        public bool IsEmpty
         {
             get 
             {

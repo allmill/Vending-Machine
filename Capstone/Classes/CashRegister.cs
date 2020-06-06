@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Capstone.Classes
 {
+    //Should not take in 20s
     public static class CashRegister
     {
         /* Take in money
@@ -21,7 +22,7 @@ namespace Capstone.Classes
                //boolean for if a user is finished despositing money
                bool finishedFeeding = false;
                //while the user is NOT finished depositing, add money to the balance
-               //only accepts 1, 2, 5, 10, 20
+               //only accepts 1, 2, 5, 10
                while (finishedFeeding == false)
                {
                    Console.WriteLine("What type of bill would you like to insert?");
