@@ -42,10 +42,6 @@ namespace Capstone.Classes
                    {
                        balance += 10.0M;
                    }
-                   else if (billInserted == 20.0M)
-                   {
-                       balance += 20.0M;
-                   }
                    //checks to see if user is done depositing money. if yes, exit while loop and return current balance
                    Console.WriteLine("Are you finished insterting bills? Y/N");
                    string userInput = Console.ReadLine();
@@ -58,7 +54,7 @@ namespace Capstone.Classes
                        finishedFeeding = false;
                    }
                }
-            Console.WriteLine("Current Money Provided: " + balance);
+            Console.WriteLine($"Current Money Provided: {balance}");
             Console.WriteLine("The vending machine will now display the products you can choose from.");
             VendingMachine.VendingSelection();
 
@@ -76,6 +72,28 @@ namespace Capstone.Classes
             }
                 return change;
         }
+
+        public static string CalculateChange()
+        {
+            int currentBalanceInCents = (int)balance * 100;
+            int numberOfQuarters = currentBalanceInCents / 25;
+            int numberOfDimes = currentBalanceInCents - (25 * numberOfQuarters) / 10;
+            int numberNickelsBack = (currentBalanceInCents - 25 * numberOfQuarters - 10 * numberOfDimes) / 5;
+
+            string CoinsChange = $"Change Received: " +
+                $"\n\t{numberOfQuarters} Quarters" +
+                $"\n\t{numberOfDimes}" +
+                $"\n\t{numberNickelsBack}";
+
+            return CoinsChange;
+        }
+
+
+         public static decimal GetBalance()
+        {
+            return balance;
+        }
+
 
 
     }
