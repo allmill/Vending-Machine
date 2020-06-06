@@ -26,7 +26,7 @@ namespace Capstone.Classes
             foreach (KeyValuePair<string, Slot> kvp in VendingMachine.slot)
             {
                 Console.WriteLine();
-                Console.Write($"{kvp.Key} : {kvp.Value.slotItem[0].ItemName}"); //the array[0] is throwing selection process off 
+                Console.Write($"{kvp.Key} : {kvp.Value.slotItem[0].ItemName} : {kvp.Value.slotItem[0].ItemCost}"); //the array[0] is throwing selection process off 
             }                                                                   //change this or change CompareInput() criteria
             Console.WriteLine();
             Console.WriteLine();
@@ -56,7 +56,7 @@ namespace Capstone.Classes
                     Console.ReadLine();
                     Menu.PurchaseMenu();
                 }
-                else if (itemSelection == kvp.Key && CashRegister.balance > kvp.Value.slotItem[].ItemCost)
+                else if (itemSelection == kvp.Key && CashRegister.balance > kvp.Value.slotItem[0].ItemCost)
                 {
                     VendingItem();
                 }

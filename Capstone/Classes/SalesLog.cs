@@ -11,9 +11,6 @@ namespace Capstone.Classes
          * Start/Ending money
          * Date/Time
          * File name assignment*/
-<<<<<<< HEAD
-        
-=======
 
         public static void WriteLog(List<string> saleLog)
         {
@@ -35,6 +32,5 @@ namespace Capstone.Classes
                 Console.WriteLine("An unexpected error has occured.");
             }
         }
->>>>>>> 410d1b0c6b0f2f8a3f6003efee731a41f2834b3d
     }
 }

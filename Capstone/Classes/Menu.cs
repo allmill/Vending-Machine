@@ -73,10 +73,7 @@ namespace Capstone.Classes
             if (purchaseMenuSelect == "1")
             {
                 CashRegister.TakeInMoney();
-<<<<<<< HEAD
                 // unsure if we want to ask amounts here or elsewhere, if so will do another method to encompass that
-=======
->>>>>>> 410d1b0c6b0f2f8a3f6003efee731a41f2834b3d
             }
             else if (purchaseMenuSelect == "2")
             {
