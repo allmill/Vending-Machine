@@ -49,8 +49,6 @@ namespace Capstone.Classes
 
         public static void CompareInput(string slotId)
         {
-            //foreach (KeyValuePair<string, Slot> kvp in VendingMachine.slot)
-            //{
                 if (slot.ContainsKey(slotId))
                     {
                     if (slot[slotId].IsEmpty)
@@ -68,32 +66,22 @@ namespace Capstone.Classes
                     }
                     else
                     {
-                        slotId = itemSelection;
                         VendingItem(slotId);
                         //THIS IS NOW THE PASSING CONDITION
                     }
                 }
-            //}
+
         }
 
-        public static void VendingItem(string slotId)
+        public static void VendingItem(string slotID)
         {
-            foreach (KeyValuePair<string, Slot> kvp in VendingMachine.slot)
-            {
-                if (slot.ContainsKey(slotId))
-                    {
-                    //kvp.Value.SlotID = itemSelection;
-                    Console.WriteLine("Vending item...");
-                    CashRegister.balance -= kvp.Value.slotItem[0].ItemCost;
-                    Console.WriteLine($"Vended: {kvp.Value.slotItem[0].ItemName} Cost: {kvp.Value.slotItem[0].ItemCost} Balance: {CashRegister.balance}");
-                    Console.WriteLine($"{kvp.Value.slotItem[0].ItemSound}");
-                }
-            }
-
-                
-            
-            //Console.Write($"{kvp.Key} : {kvp.Value.slotItem[0].ItemName} : {kvp.Value.slotItem[0].ItemCost}
-            //CashRegister.balance -= kvp.Value.slotItem[0].ItemCost;
+            Console.WriteLine("Vending item...");
+            Console.WriteLine($"{slotID} : {slot[slotID].slotItem[0].ItemName} : {slot[slotID].slotItem[0].ItemCost}");
+            CashRegister.balance -= slot[slotID].slotItem[0].ItemCost;
+            Console.Read();
+            //slot[slotID].slotItem--;
+            Menu.PurchaseMenu();
+        
         }
          
     }

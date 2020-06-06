@@ -49,7 +49,7 @@ namespace Capstone.Classes
                             {
                                 itemsInSlot.Add(new Chips(slotID, productName, itemPrice));
                             }
-                            itemSlot = new Slot(slotID, itemsInSlot, itemPrice);
+                            itemSlot = new Slot(slotID, itemsInSlot, itemPrice );
                         }
                         //If slotID starts with B, the item name, ID and price are added to a list for the type Candy
                         else if (slotID.StartsWith("B"))
@@ -69,7 +69,7 @@ namespace Capstone.Classes
                             {
                                 itemsInSlot.Add(new Drinks(slotID, productName, itemPrice));
                             }
-                            itemSlot = new Slot(slotID, itemsInSlot, itemPrice);
+                            itemSlot = new Slot(slotID, itemsInSlot, itemPrice );
                         }
                         //If slotID starts with D, the item name, ID and price are added to a list for the type Gum
                         else
