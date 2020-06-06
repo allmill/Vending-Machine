@@ -49,8 +49,7 @@ namespace Capstone.Classes
 
         public static void CompareInput(string slotId)
         {
-            foreach (KeyValuePair<string, Slot> kvp in VendingMachine.slot)
-            {
+
                 if (slot.ContainsKey(slotId))
                     {
                     if (slot[slotId].IsEmpty)
@@ -59,7 +58,7 @@ namespace Capstone.Classes
                         Console.ReadLine();
                         Menu.PurchaseMenu();
                     }
-                    else if (balance < slot[slotId].ItemCost)
+                    else if (CashRegister.balance < slot[slotId].ItemCost)
                     {
                         Console.WriteLine("Insufficient funds. Please deposit more. Returning to Purchase Menu.");
                         Console.WriteLine("Press any key to continue.");
@@ -68,18 +67,22 @@ namespace Capstone.Classes
                     }
                     else
                     {
-                        VendingItem();
+                        VendingItem(slotId);
                         //THIS IS NOW THE PASSING CONDITION
                     }
                 }
-            }
+
         }
 
-        public static void VendingItem()
+        public static void VendingItem(string slotID)
         {
             Console.WriteLine("Vending item...");
-            //Console.Write($"{kvp.Key} : {kvp.Value.slotItem[0].ItemName} : {kvp.Value.slotItem[0].ItemCost}
-            //CashRegister.balance -= kvp.Value.slotItem[0].ItemCost;
+            Console.WriteLine($"{slotID} : {slot[slotID].slotItem[0].ItemName} : {slot[slotID].slotItem[0].ItemCost}");
+            CashRegister.balance -= slot[slotID].slotItem[0].ItemCost;
+            Console.Read();
+            //slot[slotID].slotItem--;
+            Menu.PurchaseMenu();
+        
         }
          
     }
