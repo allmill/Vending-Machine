@@ -59,6 +59,8 @@ namespace Capstone.Classes
                }
             Console.WriteLine("Current Money Provided: " + balance);
             Console.WriteLine("The vending machine will now display the products you can choose from.");
+            VendingMachine.VendingSelection();
+
 
         }
         public static decimal MakeChange()
