@@ -9,14 +9,23 @@ namespace Capstone.Classes
         private string slotID;
         private InventoryItem slotType;
         public List<InventoryItem> slotItem { get; }
+        private decimal itemCost;
 
         //Creating Constructor for Slot
-        public Slot (string slotID, List<InventoryItem> slotItemNumber)
+        public Slot (string slotID, List<InventoryItem> slotItemNumber, decimal itemCost)
         {
             this.slotID = slotID;
             slotItem = slotItemNumber;
+            this.itemCost = itemCost;
         }
-        
+
+        public decimal ItemCost
+        {
+            get
+            {
+                return itemCost;
+            }
+        }
         public string SlotID
         {
             get
@@ -41,7 +50,7 @@ namespace Capstone.Classes
             }
         }
 
-        public bool isEmpty
+        public bool IsEmpty
         {
             get 
             {

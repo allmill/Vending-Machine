@@ -10,11 +10,7 @@ namespace Capstone.Classes
         public static Dictionary<string, Slot> slot = new Dictionary<string, Slot>();
         public static string itemSelection;
         public static decimal itemCost;
-        public static string Key {
-            get { return itemSelection; }
-
-        }
-        public static struct kvp {Key,Capstone.Classes.Slot);}
+        public static decimal balance = CashRegister.GetBalance();
 
         public static void VendingSelection()
         {
@@ -37,7 +33,7 @@ namespace Capstone.Classes
             Console.WriteLine();
             itemSelection = Console.ReadLine().ToUpper();
 
-            CompareInput();
+            CompareInput(itemSelection);
 
             //Console.WriteLine($"Is {itemSelection} in an object or dictionary?");
 
@@ -51,33 +47,30 @@ namespace Capstone.Classes
 
         }
 
-        public static void CompareInput()
+        public static void CompareInput(string slotId)
         {
             foreach (KeyValuePair<string, Slot> kvp in VendingMachine.slot)
             {
-                //kvp.Key = itemSelection;
-                if (slot.ContainsKey(itemSelection) && kvp.Key == itemSelection)
-                {
-                    Console.WriteLine("Item is sold out. Returning to Purchase Menu. Press any key to continue.");
-                    Console.ReadLine();
-                    Menu.PurchaseMenu();
-                }
-                else if (slot.ContainsKey(itemSelection) && CashRegister.balance > kvp.Value.slotItem[0].ItemCost)
-                {
-                    VendingItem();
-                }
-                else if (slot.ContainsKey(itemSelection) && CashRegister.balance < kvp.Value.slotItem[0].ItemCost)
-                {
-                    Console.WriteLine("Insufficient funds. Please deposit more. Returning to Purchase Menu.");
-                    Console.WriteLine("Press any key to continue.");
-                    Console.ReadLine();
-                    Menu.PurchaseMenu();
-                }
-                else
-                {
-                    Console.WriteLine("Invalid vending code used. Returning to Purchase Menu. Press any key to continue.");
-                    Console.ReadLine();
-                    Menu.PurchaseMenu();
+                if (slot.ContainsKey(slotId))
+                    {
+                    if (slot[slotId].IsEmpty)
+                    {
+                        Console.WriteLine("Item is sold out. Returning to Purchase Menu. Press any key to continue.");
+                        Console.ReadLine();
+                        Menu.PurchaseMenu();
+                    }
+                    else if (balance < slot[slotId].ItemCost)
+                    {
+                        Console.WriteLine("Insufficient funds. Please deposit more. Returning to Purchase Menu.");
+                        Console.WriteLine("Press any key to continue.");
+                        Console.ReadLine();
+                        Menu.PurchaseMenu();
+                    }
+                    else
+                    {
+                        VendingItem();
+                        //THIS IS NOW THE PASSING CONDITION
+                    }
                 }
             }
         }
