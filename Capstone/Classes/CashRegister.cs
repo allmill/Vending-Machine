@@ -102,14 +102,5 @@ namespace Capstone.Classes
 
             return CoinsChange;
         }
-
-
-         public static decimal GetBalance()
-        {
-            return balance;
-        }
-
-
-
     }
 }
