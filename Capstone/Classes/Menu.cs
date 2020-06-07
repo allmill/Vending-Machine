@@ -104,7 +104,7 @@ namespace Capstone.Classes
             }
             else
             {
-                Console.WriteLine("Not a valid menu selection.");
+                Console.WriteLine("Not a valid menu selection");
                 PurchaseMenu();
             }
 

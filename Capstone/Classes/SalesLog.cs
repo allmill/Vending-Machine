@@ -61,6 +61,12 @@ namespace Capstone.Classes
                 Console.ReadLine();
             }
 
+        
+
+        }
+        public static void AddNewAudit(string slotID)
+        {
+            VendingMachine.newAuditEntries.Add($"{DateTime.Today} {VendingMachine.slot[slotID].slotItem[0].ItemName} {VendingMachine.slot[slotID].SlotID} {CashRegister.previousBalance:C2} {CashRegister.balance:C2} ");
         }
     }
 }
