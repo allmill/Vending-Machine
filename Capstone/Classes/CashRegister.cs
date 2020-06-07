@@ -4,17 +4,16 @@ using System.Text;
 
 namespace Capstone.Classes
 {
-    //Should not take in 20s
-    public static class CashRegister
+    public class CashRegister
+    //public static class CashRegister
     {
         /* Take in money
          * Determine if enough money
          * If enough, subtract total from available
          * Make change */
         public static decimal balance = 0.0M;
-        public static int amountOfItemsBought = 0;
-        public static decimal runningTotal = 0.0M;
-        public static void TakeInMoney()
+
+        public static decimal TakeInMoney()
         {
             Console.WriteLine("-------This vending machine only accepts whole dollar amounts: $1, $2, $5, $10, $20-------");
             Console.WriteLine();
@@ -57,22 +56,37 @@ namespace Capstone.Classes
             Console.WriteLine($"Current Money Provided: {balance}");
             Console.WriteLine("The vending machine will now display the products you can choose from.");
             VendingMachine.VendingSelection();
-
-
+            return balance;
         }
-        public static decimal MakeChange()
+
+        public static string ChangeWithLeastAmountOfCoins()
         {
-            //runningTotal = (InventoryItem.Candy * price) + (InventoryItem.Drinks * price) + (InventoryItem.Gum * price) + (InventoryItem.Cips * price);
-            decimal change = 0.0M;
-            //as long as there is money to return after the user is done with its transactions
-            if (balance > 0.0M)
+            //counts each coin denomination
+            int quarterCounter = 0;
+            int dimeCounter = 0;
+            int nickelCounter = 0;
+            //as long as there is left over money in the balance, calculate the change
+            while (balance > 0M)
             {
-                //subtract the item cost * how many items you bought from the balance
-                change = balance - runningTotal;
+                Console.WriteLine("Calculating your change...");
+                if (balance >= 0.25M)
+                {
+                    balance = balance - 0.25M;
+                    quarterCounter++;
+                }
+                else if (balance >= 0.1M)
+                {
+                    balance = balance - 0.1M;
+                    dimeCounter++;
+                }
+                else if (balance >= 0.05M)
+                {
+                    balance = balance - 0.05M;
+                    nickelCounter++;
+                }
             }
-                return change;
+            return $"Your change is {quarterCounter} quarters, {dimeCounter} dimes, and {nickelCounter} nickels";
         }
-
         public static string CalculateChange()
         {
             int currentBalanceInCents = (int)balance * 100;
