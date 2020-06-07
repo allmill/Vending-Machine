@@ -14,11 +14,5 @@ namespace Capstone.Classes
             string noSlotID = null;
             Assert.AreEqual(noSlotID, VendingMachine.itemSelection);
         }
-        [TestMethod]
-        public void DoesItemCostExist()
-        {
-            decimal cost = 3.05M;
-
-        }
     }
 }
