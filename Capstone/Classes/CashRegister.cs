@@ -21,16 +21,19 @@ namespace Capstone.Classes
             
             //boolean for if a user is finished despositing money
                 bool finishedFeeding = false;
-               //while the user is NOT finished depositing, add money to the balance
-               //only accepts 1, 2, 5, 10
-               while (finishedFeeding == false)
-               {
-                    previousBalance = balance;
+            //while the user is NOT finished depositing, add money to the balance
+            //only accepts 1, 2, 5, 10
+            while (finishedFeeding == false)
+            {
+                previousBalance = balance;
 
-                    Console.WriteLine("What type of bill would you like to insert?");
-                if (Console.ReadLine() == null)
+                Console.WriteLine("What type of bill would you like to insert?");
+
+                string cashInput;
+                cashInput = Console.ReadLine();
+                decimal billInserted;
+                if (decimal.TryParse(cashInput, out billInserted))
                 {
-                    decimal billInserted = decimal.Parse(Console.ReadLine());
 
                     //Check to see if bill is valid, and if so, add to balance
                     switch (billInserted)
@@ -61,21 +64,33 @@ namespace Capstone.Classes
                 {
                     Console.WriteLine("Invalid amount entered");
                 }
-                   //checks to see if user is done depositing money. if yes, exit while loop and return current balance
-                   Console.WriteLine("Are you finished insterting bills? Y/N");
-                   string userInput = Console.ReadLine().ToLower();
-                   if (userInput == "y")
-                   {
-                       finishedFeeding = true;
-                   }
-                   else if (userInput == "n")
-                   {
-                       finishedFeeding = false;
-                   }
+                //}
+                //else
+                //{
+                //    Console.WriteLine("Invalid amount entered");
+                //}
+                //checks to see if user is done depositing money. if yes, exit while loop and return current balance
+                string userInput = "";
+                bool isValid = false;
+                while (!isValid)
+                {
+                    Console.WriteLine("Are you finished insterting bills? Y/N");
+                    userInput = Console.ReadLine().ToLower();
+                    if (userInput == "y")
+                    {
+                        finishedFeeding = true;
+                        isValid = true;
+                    }
+                    else if (userInput == "n")
+                    {
+                        finishedFeeding = false;
+                        isValid = true;
+                    }
+                }
                }
             Console.WriteLine($"Current Money Provided: {balance:C2}");
             Console.WriteLine("The vending machine will now display the products you can choose from.");
-            Console.Read();
+            Console.ReadLine();
             VendingMachine.VendingSelection();
             return balance;
         }

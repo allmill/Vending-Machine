@@ -60,9 +60,6 @@ namespace Capstone.Classes
                 Console.WriteLine(" An error has occurred");
                 Console.ReadLine();
             }
-
-        
-
         }
     }
 }
