@@ -23,7 +23,6 @@ namespace Capstone.Classes
             }
         }
 
-
         public static void VendingSelection()
         {
             Console.Clear();
@@ -95,11 +94,13 @@ namespace Capstone.Classes
         public static void VendingItem(string slotID)
         {
             Console.WriteLine("Vending item...");
+            CashRegister.previousBalance = CashRegister.balance;
             CashRegister.balance -= slot[slotID].slotItem[0].ItemCost;
             Console.WriteLine($"Item: {slot[slotID].slotItem[0].ItemName} Cost: {slot[slotID].slotItem[0].ItemCost} Current Balance: {CashRegister.balance}");
             
             Console.WriteLine(slot[slotID].slotItem[0].MakeSound());
             slot[slotID].slotItem.RemoveAt(0);
+            VendingMachine.newAuditEntries.Add($"{DateTime.Today} {slot[slotID].slotItem[0].ItemName} {slot[slotID].SlotID} {CashRegister.previousBalance:C2} {CashRegister.balance:C2} ");
             Console.WriteLine();
             Console.WriteLine("Press any key to return to the Purchasing Menu.");
             Console.Read();

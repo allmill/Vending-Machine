@@ -89,6 +89,7 @@ namespace Capstone.Classes
             else if (purchaseMenuSelect == "3")
             {
                 CashRegister.ChangeWithLeastAmountOfCoins();
+                SalesLog.UpdateAuditLog(VendingMachine.newAuditEntries);
                 Console.Read();
                 //Customer finalizes all transactions and is returned to the MainMenu()
                 //return change - using fewest coins using division and modulus probably

@@ -9,7 +9,7 @@ namespace Capstone.Classes
     {
         /* TODO needs to be called when purchase is made*/
         
-        public static void WriteAuditLog(List<string> auditLog)
+        public static void UpdateAuditLog(List<string> auditLog)
         {
             string directory = Environment.CurrentDirectory;
             string outputFile = "Log.txt";
@@ -34,7 +34,7 @@ namespace Capstone.Classes
         static public void WriteSalesReport(Dictionary<string, int> salesReport, decimal totalSales)
         {
             // Sales report outputs
-            string currentDirectory = FileReader.directoryPath;
+            string currentDirectory = Environment.CurrentDirectory;
             string fileName = "SalesReport.txt";
             string filePath = Path.Combine(currentDirectory, fileName);
 

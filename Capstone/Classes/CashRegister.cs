@@ -12,39 +12,41 @@ namespace Capstone.Classes
          * If enough, subtract total from available
          * Make change */
         public static decimal balance = 0.0M;
+        public static decimal previousBalance;
 
         public static decimal TakeInMoney()
         {
             Console.WriteLine("-------This vending machine only accepts whole dollar amounts: $1, $2, $5, $10-------");
             Console.WriteLine();
             
-               //boolean for if a user is finished despositing money
-               bool finishedFeeding = false;
+            //boolean for if a user is finished despositing money
+                bool finishedFeeding = false;
                //while the user is NOT finished depositing, add money to the balance
                //only accepts 1, 2, 5, 10
                while (finishedFeeding == false)
                {
-                   Console.WriteLine("What type of bill would you like to insert?");
+                    previousBalance = balance;
+                    Console.WriteLine("What type of bill would you like to insert?");
                    decimal billInserted = decimal.Parse(Console.ReadLine());
                    if (billInserted == 1.0M)
                    {
-                            balance += 1.0M;
+                            balance = previousBalance + 1.0M;
                    } else if (billInserted == 2.0M)
                    {
-                       balance += 2.0M;
+                            balance = previousBalance + 2.0M;
                    }
                    else if (billInserted == 5.0M)
                    {
-                            balance += 5.0M;
+                            balance = previousBalance + 5.0M;
                    }
                    else if (billInserted == 10.0M)
                    {
-                       balance += 10.0M;
+                            balance = previousBalance + 10.0M;
                    }
 
                    if (billInserted == 1.0M || billInserted == 2.0M || billInserted == 5.0M || billInserted == 10.0M)
                    {
-                    VendingMachine.newAuditEntries.Add($"{balance:C2} FEED MONEY");
+                    VendingMachine.newAuditEntries.Add($"{DateTime.Today} FEED MONEY {previousBalance:C2} {balance:C2} ");
                    }
                    //checks to see if user is done depositing money. if yes, exit while loop and return current balance
                    Console.WriteLine("Are you finished insterting bills? Y/N");
@@ -70,6 +72,7 @@ namespace Capstone.Classes
             int quarterCounter = 0;
             int dimeCounter = 0;
             int nickelCounter = 0;
+            previousBalance = balance;
             Console.WriteLine("Calculating your change...");
             //as long as there is left over money in the balance, calculate the change
             while (balance > 0M)
@@ -92,6 +95,8 @@ namespace Capstone.Classes
                 }
             }
             Console.WriteLine($"Your change is {quarterCounter} quarters, {dimeCounter} dimes, and {nickelCounter} nickels");
+            VendingMachine.newAuditEntries.Add($"{DateTime.Today} GIVE CHANGE {previousBalance:C2} {balance:C2} ");
+            
         }
         public static string CalculateChange()
         {
@@ -106,6 +111,7 @@ namespace Capstone.Classes
                 $"\n\t{numberNickelsBack}";
 
             return CoinsChange;
+            
         }
     }
 }
