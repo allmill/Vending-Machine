@@ -88,6 +88,12 @@ namespace Capstone.Classes
                         VendingItem(slotId);
                     }
                 }
+                else if (!slot.ContainsKey(slotId))
+                {
+                    Console.WriteLine("Invalid Selection. Press any key to return to the Purchase Menu.");
+                    Console.ReadLine();
+                    Menu.PurchaseMenu();
+                }
 
         }
 
