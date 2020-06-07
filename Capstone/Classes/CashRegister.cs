@@ -63,8 +63,9 @@ namespace Capstone.Classes
                        finishedFeeding = false;
                    }
                }
-            Console.WriteLine($"Current Money Provided: {balance}");
+            Console.WriteLine($"Current Money Provided: {balance:C2}");
             Console.WriteLine("The vending machine will now display the products you can choose from.");
+            Console.Read();
             VendingMachine.VendingSelection();
             return balance;
         }

@@ -30,7 +30,7 @@ namespace Capstone.Classes
             Console.WriteLine("Please enter a letter and number to select the item you want.");
             Console.WriteLine("Example: A2");
             Console.WriteLine();
-
+            
             foreach (KeyValuePair<string, Slot> kvp in VendingMachine.slot)
             {
 
