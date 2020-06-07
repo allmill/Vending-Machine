@@ -15,7 +15,7 @@ namespace Capstone.Classes
         Item name
         Price 
         Quantity */
-        private string itemSound = "Munch Munch";
+        public string itemSound = "Munch Munch, Yum!";
         public override string MakeSound()
         {
             return $"{itemSound},  Yum!";

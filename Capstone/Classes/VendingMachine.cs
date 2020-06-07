@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Capstone.Classes;
+using System.Linq;
 
 namespace Capstone.Classes
 {
@@ -10,7 +11,7 @@ namespace Capstone.Classes
         public static Dictionary<string, Slot> slot = new Dictionary<string, Slot>();
         public static string itemSelection;
         public static decimal itemCost;
-        public static decimal balance = CashRegister.GetBalance();
+        //public static decimal balance = CashRegister.GetBalance();
 
         public static void VendingSelection()
         {
@@ -24,14 +25,40 @@ namespace Capstone.Classes
             //    Console.WriteLine();
             //    Console.Write(kvp.Key); Console.Write(" : "); Console.Write(kvp.Value);
             //}
-            foreach (KeyValuePair<string, Slot> kvp in VendingMachine.slot)
+            try
             {
+                foreach (KeyValuePair<string, Slot> kvp in VendingMachine.slot)
+                {
+                    //if (slots.Contains(kvp.Value.slotItem[0].ItemName))
+                    Console.WriteLine();
+                    Console.Write($"{kvp.Key} : ");
+                    if (kvp.Value.slotItem[0].ItemName == null)
+                    {
+                        Console.Write($"SOLD OUT");
+                    }
+                    else if (kvp.Value.slotItem[0].ItemName != null)
+                    {
+                        Console.Write($"{kvp.Value.slotItem[0].ItemName} : Stock {kvp.Value.slotItem.Count}");
+                    }
+                    else
+                    {
+                        Console.Write($"{kvp.Value.slotItem[0].ItemName} : Stock {kvp.Value.slotItem.Count}");
+                    }
+                }
+            } catch (ArgumentOutOfRangeException)
+            {
+                Console.Write($"SOLD OUT");
+
+                itemSelection = Console.ReadLine().ToUpper();
+                CompareInput(itemSelection);
+
+            }
+                
                 Console.WriteLine();
-                Console.Write($"{kvp.Key} : {kvp.Value.slotItem[0].ItemName} : {kvp.Value.slotItem[0].ItemCost}"); //the array[0] is throwing selection process off 
-            }                                                                   //change this or change CompareInput() criteria
-            Console.WriteLine();
-            Console.WriteLine();
-            itemSelection = Console.ReadLine().ToUpper();
+                Console.WriteLine();
+                itemSelection = Console.ReadLine().ToUpper();
+
+
 
             CompareInput(itemSelection);
 
@@ -49,7 +76,6 @@ namespace Capstone.Classes
 
         public static void CompareInput(string slotId)
         {
-
                 if (slot.ContainsKey(slotId))
                     {
                     if (slot[slotId].IsEmpty)
@@ -77,12 +103,17 @@ namespace Capstone.Classes
         public static void VendingItem(string slotID)
         {
             Console.WriteLine("Vending item...");
-            Console.WriteLine($"{slotID} : {slot[slotID].slotItem[0].ItemName} : {slot[slotID].slotItem[0].ItemCost}");
             CashRegister.balance -= slot[slotID].slotItem[0].ItemCost;
+            Console.WriteLine($"Item: {slot[slotID].slotItem[0].ItemName} Cost: {slot[slotID].slotItem[0].ItemCost} Current Balance: {CashRegister.balance}");
+            
+            Console.WriteLine($"{slot[slotID].slotItem[0].ItemSound}");
+            //slot[slotID].slotItem.
+            slot[slotID].slotItem.RemoveAt(0);
+            Console.WriteLine();
+            Console.WriteLine("Press any key to return to the Purchasing Menu.");
             Console.Read();
-            //slot[slotID].slotItem--;
             Menu.PurchaseMenu();
-        
+
         }
          
     }

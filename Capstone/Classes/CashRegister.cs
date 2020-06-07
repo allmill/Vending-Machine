@@ -15,7 +15,7 @@ namespace Capstone.Classes
 
         public static decimal TakeInMoney()
         {
-            Console.WriteLine("-------This vending machine only accepts whole dollar amounts: $1, $2, $5, $10, $20-------");
+            Console.WriteLine("-------This vending machine only accepts whole dollar amounts: $1, $2, $5, $10-------");
             Console.WriteLine();
             
                //boolean for if a user is finished despositing money
@@ -59,16 +59,17 @@ namespace Capstone.Classes
             return balance;
         }
 
-        public static string ChangeWithLeastAmountOfCoins()
+        public static void ChangeWithLeastAmountOfCoins()
         {
             //counts each coin denomination
             int quarterCounter = 0;
             int dimeCounter = 0;
             int nickelCounter = 0;
+            Console.WriteLine("Calculating your change...");
             //as long as there is left over money in the balance, calculate the change
             while (balance > 0M)
             {
-                Console.WriteLine("Calculating your change...");
+                
                 if (balance >= 0.25M)
                 {
                     balance = balance - 0.25M;
@@ -85,7 +86,7 @@ namespace Capstone.Classes
                     nickelCounter++;
                 }
             }
-            return $"Your change is {quarterCounter} quarters, {dimeCounter} dimes, and {nickelCounter} nickels";
+            Console.WriteLine($"Your change is {quarterCounter} quarters, {dimeCounter} dimes, and {nickelCounter} nickels");
         }
         public static string CalculateChange()
         {
@@ -101,14 +102,5 @@ namespace Capstone.Classes
 
             return CoinsChange;
         }
-
-
-         public static decimal GetBalance()
-        {
-            return balance;
-        }
-
-
-
     }
 }
