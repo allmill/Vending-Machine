@@ -30,6 +30,8 @@ namespace Capstone.Classes
             Console.WriteLine("Please enter a letter and number to select the item you want.");
             Console.WriteLine("Example: A2");
             Console.WriteLine();
+            Console.WriteLine($"Current Balance: {CashRegister.balance:C2}");
+            Console.WriteLine();
             
             foreach (KeyValuePair<string, Slot> kvp in VendingMachine.slot)
             {
@@ -49,7 +51,7 @@ namespace Capstone.Classes
 
         Console.WriteLine();
         Console.WriteLine();
-        itemSelection = Console.ReadLine();
+        itemSelection = Console.ReadLine().ToUpper();
         CompareInput(itemSelection);
 
         }

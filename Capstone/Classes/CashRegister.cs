@@ -122,7 +122,7 @@ namespace Capstone.Classes
                     nickelCounter++;
                 }
             }
-            Console.WriteLine($"Your change is {quarterCounter} quarters, {dimeCounter} dimes, and {nickelCounter} nickels");
+            Console.WriteLine($"Your change is {quarterCounter} quarters, {dimeCounter} dimes, and {nickelCounter} nickels for a total of {previousBalance:C2}");
             VendingMachine.newAuditEntries.Add($"{DateTime.Today} GIVE CHANGE {previousBalance:C2} {balance:C2} ");
             
         }

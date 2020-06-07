@@ -39,7 +39,7 @@ namespace Capstone.Classes
                 }
                 Console.WriteLine();
                 Console.WriteLine();
-                Console.WriteLine("Press a key to return to Main Menu");
+                Console.WriteLine("Press Enter key to return to Main Menu");
                 Console.ReadLine();
                 MainMenu();
                 
@@ -98,8 +98,7 @@ namespace Capstone.Classes
                 //return change - using fewest coins using division and modulus probably
                 //Machine current balance should be udpated to 0$ remaining
                 //salesLog updated here or in option 2
-
-
+                
             MainMenu();
             }
             else

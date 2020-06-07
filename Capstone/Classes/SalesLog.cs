@@ -8,8 +8,7 @@ namespace Capstone.Classes
     public class SalesLog
     {
         public static decimal salesFigures;
-        /* TODO needs to be called when purchase is made*/
-        
+                
         public static void UpdateAuditLog(List<string> auditLog)
         {
             string directory = Environment.CurrentDirectory;

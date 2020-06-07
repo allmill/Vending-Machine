@@ -14,7 +14,7 @@ namespace Capstone.Classes
         {
             CashRegister zero = new CashRegister();
             
-            Assert.AreEqual(0M, CashRegister.balance = 0);
+            Assert.AreEqual(0M, CashRegister.balance);
         }
         [TestMethod]
         public void MoneyAccepted()
