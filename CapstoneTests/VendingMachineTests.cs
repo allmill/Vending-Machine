@@ -9,11 +9,13 @@ namespace Capstone.Classes
     public class VendingMachineTests
     {
         [TestMethod]
-        public void VendingSelection()
+        public void IsItSoldOut()
         {
             VendingMachine selection = new VendingMachine();
 
+            string soldOut = "SOLD OUT";
 
+            Assert.AreEqual(soldOut, VendingMachine.itemSelection);
 
         }
     }

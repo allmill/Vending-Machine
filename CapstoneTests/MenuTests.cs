@@ -1,10 +1,38 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CapstoneTests
+namespace Capstone.Classes
 {
-    class MenuTests
+    [TestClass]
+    public class MenuTests
     {
+        [TestMethod]
+        public void DisplaysVendingMachineItems()
+        {
+            try
+            {
+                FileReader.InventoryImport();
+                Assert.IsTrue(true);
+            }
+            catch
+            {
+                Assert.IsTrue(false);
+            }
+        }
+        [TestMethod]
+        public void GiveChangeWhenExiting()
+        {
+            try
+            {
+                CashRegister.ChangeWithLeastAmountOfCoins();
+                Assert.IsTrue(true);
+            }
+            catch
+            {
+                Assert.IsTrue(false);
+            }
+        }
     }
 }
