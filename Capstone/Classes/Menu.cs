@@ -26,8 +26,7 @@ namespace Capstone.Classes
             Console.WriteLine("(2) Purchase");
             Console.WriteLine("(3) Exit");
             string startingMenuSelect = Console.ReadLine();
-            int[] inventoryAmount = { 5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5};
-            int i = 0;
+
             if (startingMenuSelect == "1")
             {
                 //display VendingMachine dictionary.ItemName and List.Amount
