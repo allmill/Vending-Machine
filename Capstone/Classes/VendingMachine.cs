@@ -23,7 +23,6 @@ namespace Capstone.Classes
             }
         }
 
-
         public static void VendingSelection()
         {
             Console.Clear();
@@ -31,7 +30,7 @@ namespace Capstone.Classes
             Console.WriteLine("Please enter a letter and number to select the item you want.");
             Console.WriteLine("Example: A2");
             Console.WriteLine();
-
+            
             foreach (KeyValuePair<string, Slot> kvp in VendingMachine.slot)
             {
 
@@ -40,7 +39,7 @@ namespace Capstone.Classes
 
                 if (kvp.Value.slotItem.Count > 0)
                 {
-                    Console.Write($"{kvp.Value.slotItem[0].ItemName} : Stock {kvp.Value.slotItem.Count}");
+                    Console.Write($"{kvp.Value.slotItem[0].ItemName} : Price {kvp.Value.slotItem[0].ItemCost:C2} : Stock {kvp.Value.slotItem.Count}");
                 }
                 else
                 {
@@ -48,22 +47,10 @@ namespace Capstone.Classes
                 }
             }
 
-                Console.WriteLine();
-                Console.WriteLine();
-                itemSelection = Console.ReadLine().ToUpper();
-
-
-
-            CompareInput(itemSelection);
-
-
-            //if invalid code state invalid code, restart vendingSelection
-            //if itemSelection = itemCode, check inventory amount
-            //check balance against cost
-            //if good vendingItem() produce object name, cost, new balance, object message
-
-            //return to PurchaseMenu()
-
+        Console.WriteLine();
+        Console.WriteLine();
+        itemSelection = Console.ReadLine().ToUpper();
+        CompareInput(itemSelection);
 
         }
 
@@ -89,17 +76,25 @@ namespace Capstone.Classes
                         VendingItem(slotId);
                     }
                 }
+                else if (!slot.ContainsKey(slotId))
+                {
+                    Console.WriteLine("Invalid Selection. Press any key to return to the Purchase Menu.");
+                    Console.ReadLine();
+                    Menu.PurchaseMenu();
+                }
 
         }
 
         public static void VendingItem(string slotID)
         {
             Console.WriteLine("Vending item...");
+            CashRegister.previousBalance = CashRegister.balance;
             CashRegister.balance -= slot[slotID].slotItem[0].ItemCost;
-            Console.WriteLine($"Item: {slot[slotID].slotItem[0].ItemName} Cost: {slot[slotID].slotItem[0].ItemCost} Current Balance: {CashRegister.balance}");
+            Console.WriteLine($"Item: {slot[slotID].slotItem[0].ItemName} Cost: {slot[slotID].slotItem[0].ItemCost:C2} Current Balance: {CashRegister.balance:C2}");
             
             Console.WriteLine(slot[slotID].slotItem[0].MakeSound());
             slot[slotID].slotItem.RemoveAt(0);
+            VendingMachine.newAuditEntries.Add($"{DateTime.Today} {slot[slotID].slotItem[0].ItemName} {slot[slotID].SlotID} {CashRegister.previousBalance:C2} {CashRegister.balance:C2} ");
             Console.WriteLine();
             Console.WriteLine("Press any key to return to the Purchasing Menu.");
             Console.Read();

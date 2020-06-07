@@ -29,13 +29,15 @@ namespace Capstone.Classes
 
             if (startingMenuSelect == "1")
             {
+                Console.Clear();
                 //display VendingMachine dictionary.ItemName and List.Amount
                 FileReader.InventoryImport();
-                foreach(KeyValuePair<string, Slot> kvp in VendingMachine.slot)
+                foreach (KeyValuePair<string, Slot> kvp in VendingMachine.slot)
                 {
-                       Console.WriteLine();
-                       Console.Write($"{kvp.Key} : {kvp.Value.slotItem[0].ItemName} : {kvp.Value.slotItem[0].ItemCost:C2} : {kvp.Value.NumberOfItemsRemaining}"); 
+                    Console.WriteLine();
+                    Console.Write($"{kvp.Key} : {kvp.Value.slotItem[0].ItemName} : Price {kvp.Value.slotItem[0].ItemCost:C2} : Stock {kvp.Value.NumberOfItemsRemaining}");
                 }
+                Console.WriteLine();
                 Console.WriteLine();
                 Console.WriteLine("Press a key to return to Main Menu");
                 Console.ReadLine();
@@ -44,6 +46,7 @@ namespace Capstone.Classes
             }
             else if (startingMenuSelect == "2")
             {
+                
                 PurchaseMenu();
             }
             else if (startingMenuSelect == "3")
@@ -89,6 +92,7 @@ namespace Capstone.Classes
             else if (purchaseMenuSelect == "3")
             {
                 CashRegister.ChangeWithLeastAmountOfCoins();
+                SalesLog.UpdateAuditLog(VendingMachine.newAuditEntries);
                 Console.Read();
                 //Customer finalizes all transactions and is returned to the MainMenu()
                 //return change - using fewest coins using division and modulus probably
@@ -104,7 +108,9 @@ namespace Capstone.Classes
                 PurchaseMenu();
             }
 
-        }
+            
 
+        }
+        
     }
 }
