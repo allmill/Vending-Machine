@@ -18,7 +18,7 @@ namespace Capstone.Classes
         public void DoesItemCostExist()
         {
             decimal cost = 3.05M;
-            Assert.AreEqual(cost, VendingMachine.itemCost);
+            Assert.AreEqual(cost, Slot.ItemCost);
         }
     }
 }
