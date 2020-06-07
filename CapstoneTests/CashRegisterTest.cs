@@ -10,10 +10,26 @@ namespace Capstone.Classes
     {
         [TestMethod]
 
-        public void CheckBalance()
+        public void NoMoneyAccepted()
         {
-            CashRegister test = new CashRegister();
+            CashRegister zero = new CashRegister();
+            
+            Assert.AreEqual(0M, CashRegister.balance = 0);
+        }
+        [TestMethod]
+        public void MoneyAccepted()
+        {
+            CashRegister moreThanZero = new CashRegister();
+            decimal balance = 0;
+            Assert.AreEqual(balance > 0, CashRegister.balance > 0);
+        }
 
+        [TestMethod]
+        public void NegativeMoneyAccepted()
+        {
+            CashRegister negativeNumber = new CashRegister();
+            decimal balance = 0;
+            Assert.AreEqual(balance < 0, CashRegister.balance < 0);
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Capstone.Classes
 {
     public class Chips : InventoryItem
     {
-        public Chips(string itemName, string itemSlot, decimal itemCost) : base(itemName, itemSlot, itemCost)
+        public Chips(string itemSlot, string itemName, decimal itemCost) : base(itemSlot, itemName, itemCost)
         {
 
         }
