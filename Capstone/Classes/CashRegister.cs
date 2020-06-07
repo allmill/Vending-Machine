@@ -15,7 +15,7 @@ namespace Capstone.Classes
 
         public static decimal TakeInMoney()
         {
-            Console.WriteLine("-------This vending machine only accepts whole dollar amounts: $1, $2, $5, $10, $20-------");
+            Console.WriteLine("-------This vending machine only accepts whole dollar amounts: $1, $2, $5, $10-------");
             Console.WriteLine();
             
                //boolean for if a user is finished despositing money
