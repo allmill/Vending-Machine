@@ -74,7 +74,7 @@ namespace Capstone.Classes
                 bool isValid = false;
                 while (!isValid)
                 {
-                    Console.WriteLine("Are you finished insterting bills? Y/N");
+                    Console.WriteLine("Are you finished inserting bills? Y/N");
                     userInput = Console.ReadLine().ToLower();
                     if (userInput == "y")
                     {
