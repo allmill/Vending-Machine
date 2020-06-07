@@ -8,8 +8,8 @@ namespace Capstone.Classes
     public class SalesLog
     {
         /* TODO needs to be called when purchase is made*/
-
-        public static void WriteAuditLog(List<string> saleLog)
+        
+        public static void WriteAuditLog(List<string> auditLog)
         {
             string directory = Environment.CurrentDirectory;
             string outputFile = "Log.txt";
@@ -18,7 +18,7 @@ namespace Capstone.Classes
             {
                 using (StreamWriter sw = new StreamWriter(outputFullPath))
                 {
-                    foreach (string sale in saleLog)
+                    foreach (string sale in auditLog)
                     {
                         sw.WriteLine(sale);
                     }
@@ -29,7 +29,9 @@ namespace Capstone.Classes
                 Console.WriteLine("An unexpected error has occured.");
             }
         }
-        static public void GenerateSalesReport(Dictionary<string, int> salesReport, decimal totalSales)
+
+
+        static public void WriteSalesReport(Dictionary<string, int> salesReport, decimal totalSales)
         {
             // Sales report outputs
             string currentDirectory = FileReader.directoryPath;

@@ -13,6 +13,16 @@ namespace Capstone.Classes
         public static decimal itemCost;
         //public static decimal balance = CashRegister.GetBalance();
 
+        //public void InitializeSalesReport()
+        //{
+        //    foreach (KeyValuePair<string, Slot> kvp in slots)
+        //    {
+        //        string key = kvp.Value.SlotItemType.ProductName;
+        //        salesReport[key] = 0;
+        //    }
+        //}
+
+
         public static void VendingSelection()
         {
             Console.Clear();
@@ -106,7 +116,7 @@ namespace Capstone.Classes
             CashRegister.balance -= slot[slotID].slotItem[0].ItemCost;
             Console.WriteLine($"Item: {slot[slotID].slotItem[0].ItemName} Cost: {slot[slotID].slotItem[0].ItemCost} Current Balance: {CashRegister.balance}");
             
-            Console.WriteLine($"{slot[slotID].slotItem[0].ItemSound}");
+            Console.WriteLine(slot[slotID].slotItem[0].MakeSound());
             //slot[slotID].slotItem.
             slot[slotID].slotItem.RemoveAt(0);
             Console.WriteLine();
@@ -115,6 +125,5 @@ namespace Capstone.Classes
             Menu.PurchaseMenu();
 
         }
-         
     }
 }
