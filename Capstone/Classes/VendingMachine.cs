@@ -39,7 +39,7 @@ namespace Capstone.Classes
 
                 if (kvp.Value.slotItem.Count > 0)
                 {
-                    Console.Write($"{kvp.Value.slotItem[0].ItemName} : Stock {kvp.Value.slotItem.Count}");
+                    Console.Write($"{kvp.Value.slotItem[0].ItemName} : Price {kvp.Value.slotItem[0].ItemCost:C2} : Stock {kvp.Value.slotItem.Count}");
                 }
                 else
                 {
@@ -90,7 +90,7 @@ namespace Capstone.Classes
             Console.WriteLine("Vending item...");
             CashRegister.previousBalance = CashRegister.balance;
             CashRegister.balance -= slot[slotID].slotItem[0].ItemCost;
-            Console.WriteLine($"Item: {slot[slotID].slotItem[0].ItemName} Cost: {slot[slotID].slotItem[0].ItemCost} Current Balance: {CashRegister.balance}");
+            Console.WriteLine($"Item: {slot[slotID].slotItem[0].ItemName} Cost: {slot[slotID].slotItem[0].ItemCost:C2} Current Balance: {CashRegister.balance:C2}");
             
             Console.WriteLine(slot[slotID].slotItem[0].MakeSound());
             slot[slotID].slotItem.RemoveAt(0);

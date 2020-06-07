@@ -28,21 +28,24 @@ namespace Capstone.Classes
                     previousBalance = balance;
                     Console.WriteLine("What type of bill would you like to insert?");
                    decimal billInserted = decimal.Parse(Console.ReadLine());
-                   if (billInserted == 1.0M)
-                   {
-                            balance = previousBalance + 1.0M;
-                   } else if (billInserted == 2.0M)
-                   {
-                            balance = previousBalance + 2.0M;
-                   }
-                   else if (billInserted == 5.0M)
-                   {
-                            balance = previousBalance + 5.0M;
-                   }
-                   else if (billInserted == 10.0M)
-                   {
-                            balance = previousBalance + 10.0M;
-                   }
+                //Check to see if bill is valid, and if so, add to balance
+                switch (billInserted)
+                { 
+                    case 1.0M: 
+                        balance = previousBalance + 1.0M;
+                        break;
+                    case 2.0M:
+                        balance = previousBalance + 2.0M;
+                        break;
+                    case 5.0M:
+                        balance = previousBalance + 5.0M;
+                        break;
+                    case 10.0M:
+                        balance = previousBalance + 10.0M;
+                        break;
+                    default:
+                        break;
+                }
 
                    if (billInserted == 1.0M || billInserted == 2.0M || billInserted == 5.0M || billInserted == 10.0M)
                    {
@@ -50,12 +53,12 @@ namespace Capstone.Classes
                    }
                    //checks to see if user is done depositing money. if yes, exit while loop and return current balance
                    Console.WriteLine("Are you finished insterting bills? Y/N");
-                   string userInput = Console.ReadLine();
-                   if (userInput == "Y" || userInput == "y")
+                   string userInput = Console.ReadLine().ToLower();
+                   if (userInput == "y")
                    {
                        finishedFeeding = true;
                    }
-                   else if (userInput == "N" || userInput == "n")
+                   else if (userInput == "n")
                    {
                        finishedFeeding = false;
                    }
@@ -77,7 +80,6 @@ namespace Capstone.Classes
             //as long as there is left over money in the balance, calculate the change
             while (balance > 0M)
             {
-                
                 if (balance >= 0.25M)
                 {
                     balance = balance - 0.25M;
