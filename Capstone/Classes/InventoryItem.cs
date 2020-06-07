@@ -9,14 +9,14 @@ namespace Capstone.Classes
         public string itemName;
         public string itemSlot;
         public decimal itemCost;
-        
-        public InventoryItem (string itemSlot, string itemName, decimal itemCost)
+
+        public InventoryItem(string itemSlot, string itemName, decimal itemCost)
         {
             this.itemName = itemName;
             this.itemSlot = itemSlot;
             this.itemCost = itemCost;
         }
-        
+
         public string ItemName
         {
             get
@@ -40,7 +40,10 @@ namespace Capstone.Classes
         }
         public string ItemSound;
 
-        public abstract string MakeSound();
+        public virtual string MakeSound()
+        {
+        return $"{ItemSound},  Yum!";
+        }
 
     }
 }
