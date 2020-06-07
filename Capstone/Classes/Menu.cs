@@ -26,8 +26,7 @@ namespace Capstone.Classes
             Console.WriteLine("(2) Purchase");
             Console.WriteLine("(3) Exit");
             string startingMenuSelect = Console.ReadLine();
-            int[] inventoryAmount = { 5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5};
-            int i = 0;
+
             if (startingMenuSelect == "1")
             {
                 //display VendingMachine dictionary.ItemName and List.Amount
@@ -90,6 +89,7 @@ namespace Capstone.Classes
             else if (purchaseMenuSelect == "3")
             {
                 CashRegister.ChangeWithLeastAmountOfCoins();
+                Console.Read();
                 //Customer finalizes all transactions and is returned to the MainMenu()
                 //return change - using fewest coins using division and modulus probably
                 //Machine current balance should be udpated to 0$ remaining

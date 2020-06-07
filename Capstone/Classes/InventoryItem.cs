@@ -42,7 +42,7 @@ namespace Capstone.Classes
 
         public virtual string MakeSound()
         {
-        return $"{ItemSound},  Yum!";
+        return $"{ItemSound}";
         }
 
     }

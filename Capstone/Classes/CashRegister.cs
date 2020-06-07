@@ -41,6 +41,11 @@ namespace Capstone.Classes
                    {
                        balance += 10.0M;
                    }
+
+                   if (billInserted == 1.0M || billInserted == 2.0M || billInserted == 5.0M || billInserted == 10.0M)
+                   {
+                    VendingMachine.newAuditEntries.Add($"{balance:C2} FEED MONEY");
+                   }
                    //checks to see if user is done depositing money. if yes, exit while loop and return current balance
                    Console.WriteLine("Are you finished insterting bills? Y/N");
                    string userInput = Console.ReadLine();
