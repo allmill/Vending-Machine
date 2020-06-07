@@ -11,6 +11,7 @@ namespace Capstone.Classes
         [TestMethod]
         public void DisplaysVendingMachineItems()
         {
+            Menu vendingDisplay = new Menu();
             try
             {
                 FileReader.InventoryImport();
@@ -24,6 +25,7 @@ namespace Capstone.Classes
         [TestMethod]
         public void GiveChangeWhenExiting()
         {
+            Menu changeGiven = new Menu();
             try
             {
                 CashRegister.ChangeWithLeastAmountOfCoins();
@@ -33,6 +35,8 @@ namespace Capstone.Classes
             {
                 Assert.IsTrue(false);
             }
+
         }
+       
     }
 }
