@@ -47,22 +47,10 @@ namespace Capstone.Classes
                 }
             }
 
-                Console.WriteLine();
-                Console.WriteLine();
-                itemSelection = Console.ReadLine().ToUpper();
-
-
-
-            CompareInput(itemSelection);
-
-
-            //if invalid code state invalid code, restart vendingSelection
-            //if itemSelection = itemCode, check inventory amount
-            //check balance against cost
-            //if good vendingItem() produce object name, cost, new balance, object message
-
-            //return to PurchaseMenu()
-
+        Console.WriteLine();
+        Console.WriteLine();
+        itemSelection = Console.ReadLine().ToUpper();
+        CompareInput(itemSelection);
 
         }
 

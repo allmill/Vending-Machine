@@ -7,7 +7,6 @@ namespace Capstone.Classes
 { //TODO Check type based on location
     public class FileReader
     {
-
         public static string[] inventoryWords;
 
         /* Importing initial csv
@@ -15,14 +14,10 @@ namespace Capstone.Classes
          * Update # inventory
          * Redistribute remaining inventory list */
 
-
         //FileAssignment variables
         public static string directoryPath = Environment.CurrentDirectory;
         public static string fileName = "vendingmachine.csv";
         public static string inventoryPath = Path.Combine(directoryPath, fileName);
-
-        //ReaderVariables
-        //Dictionary<string, Slot> slots = VendingMachine.slot;
         
         public static void InventoryImport()
         {

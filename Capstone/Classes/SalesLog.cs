@@ -7,6 +7,7 @@ namespace Capstone.Classes
 {
     public class SalesLog
     {
+        public static decimal salesFigures;
         /* TODO needs to be called when purchase is made*/
         
         public static void UpdateAuditLog(List<string> auditLog)
@@ -31,9 +32,10 @@ namespace Capstone.Classes
         }
 
 
-        static public void WriteSalesReport(Dictionary<string, int> salesReport, decimal totalSales)
+        public static void WriteSalesReport(Dictionary<string, int> salesReport, decimal totalSales)
         {
             // Sales report outputs
+            salesFigures = totalSales;
             string currentDirectory = Environment.CurrentDirectory;
             string fileName = "SalesReport.txt";
             string filePath = Path.Combine(currentDirectory, fileName);
