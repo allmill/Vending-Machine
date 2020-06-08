@@ -54,16 +54,23 @@ namespace Capstone.Classes
             CashRegister.SubtractFromBalance(cost);
             Assert.AreEqual(38.5M, CashRegister.balance);
         }
+        [TestMethod]
+        public void ChangeCalculatorEndingBalance()
+        {
+            decimal balance = 0;
+            CashRegister.ChangeWithLeastAmountOfCoins();
 
-        //public void ChangeCalculator()
-        //{
+            Assert.AreEqual(0M, CashRegister.balance);
 
-        //    decimal balance = 0;
-        //    CashRegister.ChangeWithLeastAmountOfCoins();
+            balance = 10M;
+            CashRegister.ChangeWithLeastAmountOfCoins();
+            Assert.AreEqual(0M, CashRegister.balance);
 
-        //    Assert.AreEqual(0M, CashRegister.ChangeWithLeastAmountOfCoins());
+            balance = 1500M;
+            CashRegister.ChangeWithLeastAmountOfCoins();
+            Assert.AreEqual(0M, CashRegister.balance);
 
-        //}
+        }
 
     }
 }

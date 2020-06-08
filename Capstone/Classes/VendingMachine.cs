@@ -14,14 +14,15 @@ namespace Capstone.Classes
         public static string itemSelection = "";
         public static decimal itemCost;
 
-        public void InitializeSalesReport()
-        {
-            foreach (KeyValuePair<string, Slot> kvp in slot)
-            {
-                string key = kvp.Value.SlotType.ItemName;
-                newSalesReportEntries[key] = 0;
-            }
-        }
+        //Ran out of time for SalesLog
+        //public void InitializeSalesReport()
+        //{
+        //    foreach (KeyValuePair<string, Slot> kvp in slot)
+        //    {
+        //        string key = kvp.Value.SlotType.ItemName;
+        //        newSalesReportEntries[key] = 0;
+        //    }
+        //}
 
         public static void VendingSelection()
         {
@@ -95,7 +96,7 @@ namespace Capstone.Classes
             Console.WriteLine($"Item: {slot[slotID].slotItem[0].ItemName} Cost: {slot[slotID].slotItem[0].ItemCost:C2} Current Balance: {CashRegister.balance:C2}");
 
             Console.WriteLine(slot[slotID].slotItem[0].MakeSound());
-            SalesLog.createAuditEntry(($"{slotID} {slot[slotID].slotItem[0].ItemName}"), CashRegister.balance, CashRegister.previousBalance);  
+            AuditLog.createAuditEntry(($"{slotID} {slot[slotID].slotItem[0].ItemName}"), CashRegister.balance, CashRegister.previousBalance);  
             slot[slotID].slotItem.RemoveAt(0);
             Console.WriteLine();
             Console.WriteLine("Press any key to return to the Purchasing Menu.");

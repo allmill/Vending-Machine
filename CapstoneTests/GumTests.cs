@@ -7,13 +7,13 @@ using Capstone.Classes;
 namespace CapstoneTests
 {
     [TestClass]
-    public class ChipsTests
+    public class GumTests
     {
         [TestMethod]
         public void MakeSound()
         {
-            Chips chipsSound = new Chips("B1", "Pringles", 1.05M);
-            Assert.AreEqual("Crunch Crunch, Yum!", chipsSound.MakeSound());
+            Gum gumSound = new Gum("B1", "Big Red", 1.05M);
+            Assert.AreEqual("Chew Chew, Yum!", gumSound.MakeSound());
         }
     }
 }

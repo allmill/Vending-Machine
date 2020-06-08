@@ -91,7 +91,7 @@ namespace Capstone.Classes
             else if (purchaseMenuSelect == "3")
             {
                 CashRegister.ChangeWithLeastAmountOfCoins();
-                SalesLog.UpdateAuditLog(VendingMachine.newAuditEntries);
+                AuditLog.UpdateAuditLog(VendingMachine.newAuditEntries);
                 Console.ReadKey();
                 //Customer finalizes all transactions and is returned to the MainMenu()
                 //return change - using fewest coins using division and modulus probably
@@ -139,7 +139,7 @@ namespace Capstone.Classes
                 {
                     addMoney = 10M;
                 }
-                SalesLog.createAuditEntry("FEED MONEY", CashRegister.previousBalance, CashRegister.balance );
+                AuditLog.createAuditEntry("FEED MONEY", CashRegister.previousBalance, CashRegister.balance );
                 CashRegister.AddToBalance(addMoney);
             }
             else

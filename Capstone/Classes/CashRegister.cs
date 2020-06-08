@@ -45,7 +45,7 @@ namespace Capstone.Classes
                 }
             }
             Console.WriteLine($"Your change is {quarterCounter} quarters, {dimeCounter} dimes, and {nickelCounter} nickels for a total of {previousBalance:C2}");
-            SalesLog.createAuditEntry("GIVE CHANGE", previousBalance, balance );
+            AuditLog.createAuditEntry("GIVE CHANGE", previousBalance, balance );
         }
     }
 }
