@@ -8,6 +8,30 @@ namespace Capstone.Classes
     {
         public static decimal balance;
         public static decimal previousBalance;
+        public static decimal addMoney;
+
+        public static decimal ShouldAddToBalance(decimal moneySelectValue)
+        {
+            
+            if (moneySelectValue == 1)
+            {
+                addMoney = 1M;
+            }
+            else if (moneySelectValue == 2)
+            {
+                addMoney = 2M;
+            }
+            else if (moneySelectValue == 3)
+            {
+                addMoney = 5M;
+            }
+            else
+            {
+                addMoney = 10M;
+            }
+
+            return addMoney;
+        }
         public static void AddToBalance (decimal addMoney)
         {
             balance += addMoney;

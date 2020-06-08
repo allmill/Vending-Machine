@@ -7,7 +7,7 @@ namespace Capstone.Classes
 {
     public class Menu
     {
-        private Dictionary<string, Slot> slot = new Dictionary<string, Slot>();
+        //private Dictionary<string, Slot> slot = new Dictionary<string, Slot>();
         /*prompt
          * display items
          * purchase items
@@ -31,11 +31,12 @@ namespace Capstone.Classes
                 Console.Clear();
                 //display VendingMachine dictionary.ItemName and List.Amount
                 FileReader.InventoryImport();
-                foreach (KeyValuePair<string, Slot> kvp in VendingMachine.slot)
-                {
-                    Console.WriteLine();
-                    Console.Write($"{kvp.Key} : {kvp.Value.slotItem[0].ItemName} : Price {kvp.Value.slotItem[0].ItemCost:C2} : Stock {kvp.Value.NumberOfItemsRemaining}");
-                }
+                VendingMachine.DisplayItems(VendingMachine.slot);
+                //foreach (KeyValuePair<string, Slot> kvp in VendingMachine.slot)
+                //{
+                //    Console.WriteLine();
+                //    Console.Write($"{kvp.Key} : {kvp.Value.slotItem[0].ItemName} : Price {kvp.Value.slotItem[0].ItemCost:C2} : Stock {kvp.Value.NumberOfItemsRemaining}");
+                //}
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.WriteLine("Press Enter key to return to Main Menu");
@@ -123,22 +124,8 @@ namespace Capstone.Classes
             decimal addMoney = 0M;
             if (moneySelectValue > 0 && moneySelectValue <=4)
             {
-                if (moneySelectValue == 1)
-                {
-                    addMoney = 1M;
-                }
-                else if (moneySelectValue == 2)
-                {
-                    addMoney = 2M;
-                }
-                else if (moneySelectValue == 3)
-                {
-                    addMoney = 5M;
-                }
-                else                
-                {
-                    addMoney = 10M;
-                }
+                addMoney = CashRegister.ShouldAddToBalance(moneySelectValue);
+                
                 AuditLog.createAuditEntry("FEED MONEY", CashRegister.previousBalance, CashRegister.balance );
                 CashRegister.AddToBalance(addMoney);
             }

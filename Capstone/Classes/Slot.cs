@@ -7,7 +7,6 @@ namespace Capstone.Classes
     public class Slot
     {
         private string slotID;
-        private InventoryItem slotType;
         public List<InventoryItem> slotItem { get; }
         private decimal itemCost;
 
@@ -33,15 +32,7 @@ namespace Capstone.Classes
                 return slotID;
             }
         }
-
-        public InventoryItem SlotType
-        {
-            get
-            {
-                return slotType;
-            }
-        }
-
+                
         public int NumberOfItemsRemaining
         {
             get
