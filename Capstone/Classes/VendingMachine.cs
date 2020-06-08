@@ -100,8 +100,8 @@ namespace Capstone.Classes
             slot[slotID].slotItem.RemoveAt(0);
             Console.WriteLine();
             Console.WriteLine("Press any key to return to the Purchasing Menu.");
-            Console.ReadKey();
-            Menu.PurchaseMenu();
+           Console.ReadKey();
+           Menu.PurchaseMenu();
 
         }
     }

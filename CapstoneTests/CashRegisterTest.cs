@@ -54,6 +54,7 @@ namespace Capstone.Classes
             CashRegister.SubtractFromBalance(cost);
             Assert.AreEqual(38.5M, CashRegister.balance);
         }
+
         [TestMethod]
         public void ChangeCalculatorEndingBalance()
         {
