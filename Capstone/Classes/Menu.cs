@@ -18,7 +18,6 @@ namespace Capstone.Classes
         public static void MainMenu()
         {
             Console.Clear();
-            //FileReader.InventoryImport(); is done at startup and prevents from restocking if they go back to MainMenu
             Console.WriteLine("---- Welcome to the Vendo-Matic 800 ----");
             Console.WriteLine("Please select a number 1 - 3 for the following menu options.");
             Console.WriteLine();
@@ -66,6 +65,7 @@ namespace Capstone.Classes
             Console.Clear();
             Console.WriteLine("---- Purchasing Menu ----");
             Console.WriteLine("Please select a number 1 - 3 for the following menu options.");
+            Console.WriteLine($"Current balance: {CashRegister.balance:C2}");
             Console.WriteLine();
             Console.WriteLine("(1) Feed Money");
             Console.WriteLine("(2) Select Product");
@@ -74,7 +74,7 @@ namespace Capstone.Classes
 
             if (purchaseMenuSelect == "1")
             {
-                CashRegister.TakeInMoney();
+                Menu.TakeMoneyMenu();
                 // unsure if we want to ask amounts here or elsewhere, if so will do another method to encompass that
             }
             else if (purchaseMenuSelect == "2")
@@ -84,16 +84,15 @@ namespace Capstone.Classes
                 //if code doesnt exist return info and back to PurchaseMenu()
                 //if sold out, informed then returned to PurchaseMenu()
                 //if valid product selected it is dispensed:
-                        //reference call to ISounds,
-                        //update balance
-                        //update Inventory, 
+
+
                         
             }
             else if (purchaseMenuSelect == "3")
             {
                 CashRegister.ChangeWithLeastAmountOfCoins();
                 SalesLog.UpdateAuditLog(VendingMachine.newAuditEntries);
-                Console.Read();
+                Console.ReadKey();
                 //Customer finalizes all transactions and is returned to the MainMenu()
                 //return change - using fewest coins using division and modulus probably
                 //Machine current balance should be udpated to 0$ remaining
@@ -106,10 +105,50 @@ namespace Capstone.Classes
                 Console.WriteLine("Not a valid menu selection");
                 PurchaseMenu();
             }
-
-            
-
         }
-        
+        public static void TakeMoneyMenu()
+        {
+            Console.WriteLine("-------This vending machine only accepts whole dollar amounts: $1, $2, $5, $10-------");
+            Console.WriteLine();
+            Console.WriteLine("Please select your amount:");
+            Console.WriteLine("1) $1");
+            Console.WriteLine("2) $2");
+            Console.WriteLine("3) $5");
+            Console.WriteLine("4) $10");
+
+            Console.WriteLine();
+
+            int moneySelectValue = 0;
+            int.TryParse(Console.ReadLine(), out moneySelectValue);
+            decimal addMoney = 0M;
+            if (moneySelectValue > 0 && moneySelectValue <=4)
+            {
+                if (moneySelectValue == 1)
+                {
+                    addMoney = 1M;
+                }
+                else if (moneySelectValue == 2)
+                {
+                    addMoney = 2M;
+                }
+                else if (moneySelectValue == 3)
+                {
+                    addMoney = 5M;
+                }
+                else                
+                {
+                    addMoney = 10M;
+                }
+                SalesLog.createAuditEntry("FEED MONEY", CashRegister.previousBalance, CashRegister.balance );
+                CashRegister.AddToBalance(addMoney);
+            }
+            else
+            {
+                Console.WriteLine("Invalid selection.");
+                TakeMoneyMenu();
+            }
+            PurchaseMenu();
+        }
+
     }
 }

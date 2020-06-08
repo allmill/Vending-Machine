@@ -4,7 +4,7 @@ using System.IO;
 using System.Text;
 
 namespace Capstone.Classes
-{ //TODO Check type based on location
+{ 
     public class FileReader
     {
         public static string[] inventoryWords;

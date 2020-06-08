@@ -9,44 +9,61 @@ namespace Capstone.Classes
     public class CashRegisterTest
     {
         [TestMethod]
-
-        public void NoMoneyAccepted()
-        {
-            CashRegister zero = new CashRegister();
-            
-            Assert.AreEqual(0M, CashRegister.balance);
-        }
-        [TestMethod]
         public void MoneyAccepted()
         {
-            CashRegister moreThanZero = new CashRegister();
-            decimal balance = 0;
-            Assert.AreEqual(balance > 0, CashRegister.balance > 0);
-        }
+            decimal balance = 10M;
+            CashRegister.AddToBalance(10M);
+            Assert.AreEqual(10M, CashRegister.balance);
+            CashRegister.balance = 0M;
 
+            balance = 5M;
+            CashRegister.AddToBalance(5M);
+            Assert.AreEqual(5M, CashRegister.balance);
+            CashRegister.balance = 0M;
+
+            balance = 2M;
+            CashRegister.AddToBalance(2M);
+            Assert.AreEqual(2M, CashRegister.balance);
+            CashRegister.balance = 0M;
+
+            balance = 1M;
+            CashRegister.AddToBalance(1M);
+            Assert.AreEqual(1M, CashRegister.balance);
+            CashRegister.balance = 0M;
+        }
         [TestMethod]
-        public void NegativeMoneyAccepted()
+        public void MoneySpent()
         {
-            CashRegister negativeNumber = new CashRegister();
-            decimal balance = 0;
-            Assert.AreEqual(balance < 0, CashRegister.balance < 0);
-        }
-        [TestMethod]
-        public void ChangeCalculator()
-        {
-            CashRegister change = new CashRegister();
-            int balance = 0;
-            int currentBalanceInCents = (int)balance * 100;
-            int numberOfQuarters = currentBalanceInCents / 25;
-            int numberOfDimes = currentBalanceInCents - (25 * numberOfQuarters) / 10;
-            int numberNickelsBack = (currentBalanceInCents - 25 * numberOfQuarters - 10 * numberOfDimes) / 5;
-            string CoinsChange = $"Change Received: " +
-                $"\n\t{numberOfQuarters} Quarters" +
-                $"\n\t{numberOfDimes}" +
-                $"\n\t{numberNickelsBack}";
+            decimal cost = 3.05M;
+            CashRegister.balance = 5M;
+            CashRegister.SubtractFromBalance(cost);
+            Assert.AreEqual(1.95M, CashRegister.balance);
 
-            Assert.AreEqual(CoinsChange, CashRegister.CalculateChange());
+            cost = 1M;
+            CashRegister.balance = 10M;
+            CashRegister.SubtractFromBalance(cost);
+            Assert.AreEqual(9M, CashRegister.balance);
 
+            cost = 5;
+            CashRegister.balance = 5M;
+            CashRegister.SubtractFromBalance(cost);
+            Assert.AreEqual(0M, CashRegister.balance);
+
+            cost = 1.5M;
+            CashRegister.balance = 40M;
+            CashRegister.SubtractFromBalance(cost);
+            Assert.AreEqual(38.5M, CashRegister.balance);
         }
+
+        //public void ChangeCalculator()
+        //{
+
+        //    decimal balance = 0;
+        //    CashRegister.ChangeWithLeastAmountOfCoins();
+
+        //    Assert.AreEqual(0M, CashRegister.ChangeWithLeastAmountOfCoins());
+
+        //}
+
     }
 }

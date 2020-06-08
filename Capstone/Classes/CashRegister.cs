@@ -5,96 +5,18 @@ using System.Text;
 namespace Capstone.Classes
 {
     public class CashRegister
-    //public static class CashRegister
     {
-        /* Take in money
-         * Determine if enough money
-         * If enough, subtract total from available
-         * Make change */
-        public static decimal balance = 0.0M;
+        public static decimal balance;
         public static decimal previousBalance;
-
-        public static decimal TakeInMoney()
+        public static void AddToBalance (decimal addMoney)
         {
-            Console.WriteLine("-------This vending machine only accepts whole dollar amounts: $1, $2, $5, $10-------");
-            Console.WriteLine();
-            
-            //boolean for if a user is finished despositing money
-                bool finishedFeeding = false;
-            //while the user is NOT finished depositing, add money to the balance
-            //only accepts 1, 2, 5, 10
-            while (finishedFeeding == false)
-            {
-                previousBalance = balance;
-
-                Console.WriteLine("What type of bill would you like to insert?");
-
-                string cashInput;
-                cashInput = Console.ReadLine();
-                decimal billInserted;
-                if (decimal.TryParse(cashInput, out billInserted))
-                {
-
-                    //Check to see if bill is valid, and if so, add to balance
-                    switch (billInserted)
-                    {
-                        case 1.0M:
-                            balance = previousBalance + 1.0M;
-                            break;
-                        case 2.0M:
-                            balance = previousBalance + 2.0M;
-                            break;
-                        case 5.0M:
-                            balance = previousBalance + 5.0M;
-                            break;
-                        case 10.0M:
-                            balance = previousBalance + 10.0M;
-                            break;
-                        default:
-                            Console.WriteLine("Amount entered is invalid");
-                            break;
-                    }
-
-                    if (billInserted == 1.0M || billInserted == 2.0M || billInserted == 5.0M || billInserted == 10.0M)
-                    {
-                        VendingMachine.newAuditEntries.Add($"{DateTime.Today} FEED MONEY {previousBalance:C2} {balance:C2} ");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Invalid amount entered");
-                }
-                //}
-                //else
-                //{
-                //    Console.WriteLine("Invalid amount entered");
-                //}
-                //checks to see if user is done depositing money. if yes, exit while loop and return current balance
-                string userInput = "";
-                bool isValid = false;
-                while (!isValid)
-                {
-                    Console.WriteLine("Are you finished inserting bills? Y/N");
-                    userInput = Console.ReadLine().ToLower();
-                    if (userInput == "y")
-                    {
-                        finishedFeeding = true;
-                        isValid = true;
-                    }
-                    else if (userInput == "n")
-                    {
-                        finishedFeeding = false;
-                        isValid = true;
-                    }
-                }
-               }
-            Console.WriteLine($"Current Money Provided: {balance:C2}");
-            Console.WriteLine("The vending machine will now display the products you can choose from.");
-            Console.ReadLine();
-            VendingMachine.VendingSelection();
-            return balance;
+            balance += addMoney;
         }
 
+        public static void SubtractFromBalance (decimal spendMoney)
+        {
+            balance -= spendMoney;
+        }
         public static void ChangeWithLeastAmountOfCoins()
         {
             //counts each coin denomination
@@ -123,23 +45,7 @@ namespace Capstone.Classes
                 }
             }
             Console.WriteLine($"Your change is {quarterCounter} quarters, {dimeCounter} dimes, and {nickelCounter} nickels for a total of {previousBalance:C2}");
-            VendingMachine.newAuditEntries.Add($"{DateTime.Today} GIVE CHANGE {previousBalance:C2} {balance:C2} ");
-            
-        }
-        public static string CalculateChange()
-        {
-            int currentBalanceInCents = (int)balance * 100;
-            int numberOfQuarters = currentBalanceInCents / 25;
-            int numberOfDimes = currentBalanceInCents - (25 * numberOfQuarters) / 10;
-            int numberNickelsBack = (currentBalanceInCents - 25 * numberOfQuarters - 10 * numberOfDimes) / 5;
-
-            string CoinsChange = $"Change Received: " +
-                $"\n\t{numberOfQuarters} Quarters" +
-                $"\n\t{numberOfDimes}" +
-                $"\n\t{numberNickelsBack}";
-
-            return CoinsChange;
-            
+            SalesLog.createAuditEntry("GIVE CHANGE", previousBalance, balance );
         }
     }
 }

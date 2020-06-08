@@ -81,7 +81,7 @@ namespace Capstone.Classes
                 else if (!slot.ContainsKey(slotId))
                 {
                     Console.WriteLine("Invalid Selection. Press any key to return to the Purchase Menu.");
-                    Console.ReadLine();
+                    Console.ReadKey();
                     Menu.PurchaseMenu();
                 }
 
@@ -91,15 +91,15 @@ namespace Capstone.Classes
         {
             Console.WriteLine("Vending item...");
             CashRegister.previousBalance = CashRegister.balance;
-            CashRegister.balance -= slot[slotID].slotItem[0].ItemCost;
+            CashRegister.SubtractFromBalance(slot[slotID].slotItem[0].ItemCost);
             Console.WriteLine($"Item: {slot[slotID].slotItem[0].ItemName} Cost: {slot[slotID].slotItem[0].ItemCost:C2} Current Balance: {CashRegister.balance:C2}");
 
             Console.WriteLine(slot[slotID].slotItem[0].MakeSound());
-            VendingMachine.newAuditEntries.Add($"{DateTime.Today} {slot[slotID].slotItem[0].ItemName} {slot[slotID].SlotID} {CashRegister.previousBalance:C2} {CashRegister.balance:C2} ");
+            SalesLog.createAuditEntry(($"{slotID} {slot[slotID].slotItem[0].ItemName}"), CashRegister.balance, CashRegister.previousBalance);  
             slot[slotID].slotItem.RemoveAt(0);
             Console.WriteLine();
             Console.WriteLine("Press any key to return to the Purchasing Menu.");
-            Console.Read();
+            Console.ReadKey();
             Menu.PurchaseMenu();
 
         }

@@ -10,14 +10,11 @@ namespace Capstone.Classes
         {
 
         }
-        /* Sound
-  Item name
-  Price 
-  Quantity */
+
         public string itemSound = "Crunch Crunch";
         public override string MakeSound()
         {
-            return $"{itemSound},  Yum!";
+            return $"{itemSound}, Yum!";
         }
     }
 }

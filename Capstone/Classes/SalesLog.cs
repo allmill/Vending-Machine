@@ -30,6 +30,11 @@ namespace Capstone.Classes
             }
         }
 
+        public static void createAuditEntry(string message, decimal balance, decimal balanceAfter)
+        {
+            VendingMachine.newAuditEntries.Add($"{DateTime.Now} {message} {balance:C2} {balanceAfter:C2}");
+        }
+
 
         public static void WriteSalesReport(Dictionary<string, int> salesReport, decimal totalSales)
         {

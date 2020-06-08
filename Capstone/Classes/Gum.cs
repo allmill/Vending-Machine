@@ -14,7 +14,7 @@ namespace Capstone.Classes
         public string itemSound = "Chew Chew";
         public override string MakeSound()
         {
-            return $"{itemSound},  Yum!";
+            return $"{itemSound}, Yum!";
         }
     }
 }
