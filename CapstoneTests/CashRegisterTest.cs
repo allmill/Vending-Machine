@@ -72,6 +72,26 @@ namespace Capstone.Classes
             Assert.AreEqual(0M, CashRegister.balance);
 
         }
+        [TestMethod]
+        public void CorrectSelection()
+        {
+            decimal balance = 1;
+            CashRegister.ShouldAddToBalance(1);
+            Assert.AreEqual(1M, CashRegister.addMoney);
+
+            balance = 2;
+            CashRegister.ShouldAddToBalance(2);
+            Assert.AreEqual(2M, CashRegister.addMoney);
+
+            balance = 5;
+            CashRegister.ShouldAddToBalance(3);
+            Assert.AreEqual(5M, CashRegister.addMoney);
+
+            balance = 10;
+            CashRegister.ShouldAddToBalance(4);
+            Assert.AreEqual(10M, CashRegister.addMoney);
+        }
 
     }
+    
 }

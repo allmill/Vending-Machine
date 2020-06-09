@@ -25,7 +25,7 @@ namespace Capstone.Classes
             {
                 addMoney = 5M;
             }
-            else
+            else if (moneySelectValue == 4)
             {
                 addMoney = 10M;
             }
