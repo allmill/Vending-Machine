@@ -30,7 +30,7 @@ namespace Capstone.Classes
             {
                 Console.Clear();
                 //display VendingMachine dictionary.ItemName and List.Amount
-                FileReader.InventoryImport();
+                //FileReader.InventoryImport();
                 VendingMachine.DisplayItems(VendingMachine.slot);
                 //foreach (KeyValuePair<string, Slot> kvp in VendingMachine.slot)
                 //{
